@@ -239,6 +239,10 @@ sns.heatmap(corr_df,vmax=1.0,vmin=-1.0,
             yticklabels=name_list,annot=True,fmt=".2f")
 ```
 
+![Feature correlation heatmap](https://i-blog.csdnimg.cn/blog_migrate/51482342ea0855e50710569ce21c65dd.png#pic_center)
+
+*Figure 1: Correlation matrix heatmap showing relationships between features and hardness. Features with |r| < 0.45 are considered uncorrelated and will be removed.*
+
 
 ```python
 # Determine features to delete
@@ -389,6 +393,10 @@ for i in np.arange(0,6):
     mse_list.append(mse)
 ```
 
+![Model performance comparison without optimization](https://i-blog.csdnimg.cn/blog_migrate/b3ffd29bff54c985cf6e59d032576b29.png#pic_center)
+
+*Figure 2: Comparison of MSE and R² scores for six different regression models without hyperparameter optimization. Random Forest and Gradient Boosting show promising results.*
+
 
 ```python
 # 5-fold cross-validation RMSE
@@ -401,6 +409,14 @@ def cross_val_MSE(model,X,y,test_size=0.25):
                                 scoring='neg_mean_squared_error') # ShuffleSplit shuffles data
     return np.mean(-scores_model)
 ```
+
+![Cross-validation performance without optimization](https://i-blog.csdnimg.cn/blog_migrate/1136efdba947e75272e88725fbb5049c.png#pic_center)
+
+*Figure 3: Cross-validation results showing model performance with shuffled data splits, providing more robust evaluation.*
+
+![Predicted vs actual hardness without optimization](https://i-blog.csdnimg.cn/blog_migrate/5e39b4c4f93fc9b8abad4b490fb2a462.png#pic_center)
+
+*Figure 4: Scatter plots comparing predicted vs. actual hardness values for all six models without optimization. Closer alignment to the diagonal line indicates better predictions.*
 
 
 ```python
@@ -492,6 +508,18 @@ y_rf_pred_best=best_rf.predict(X_test)
 
     {'criterion': 'squared_error', 'max_depth': 15, 'min_samples_leaf': 2, 'n_estimators': 210}
 
+
+![Predicted vs actual hardness with optimization](https://i-blog.csdnimg.cn/blog_migrate/b91db9b93b85d5867e157eed05d87d02.png#pic_center)
+
+*Figure 5: Scatter plots after hyperparameter optimization showing significantly improved predictions for all models. The optimized models show tighter clustering around the perfect prediction line.*
+
+![Model performance comparison with optimization](https://i-blog.csdnimg.cn/blog_migrate/edcbaa39c01657c1d4fd5f17b7c18de2.png#pic_center)
+
+*Figure 6: Comparison of MSE and R² scores after optimization. All models show substantial improvement, with GBT achieving the best overall performance.*
+
+![Cross-validation performance with optimization](https://i-blog.csdnimg.cn/blog_migrate/9d0bfba692a1d25deb1c83297ef5d9ce.png#pic_center)
+
+*Figure 7: Cross-validation results after hyperparameter optimization, confirming the robustness of the improved models.*
 
 ## Summary
 

@@ -81,6 +81,10 @@ We compare four regression methods:
 3. **Gradient Boosting Regression (GBR)**: Ensemble method using boosting
 4. **Random Forest Regression (RFR)**: Ensemble method using bagging
 
+![d-band center data tables](https://i-blog.csdnimg.cn/blog_migrate/deda5c5903b38d435aaa9f725d855fd1.png#pic_center)
+
+*Figure 1: d-band center values for surface impurity structure (Table 1) showing the relationship between host metals (rows) and guest metals (columns).*
+
 ### Descriptors
 
 We use readily available metal properties as descriptors:
@@ -161,6 +165,14 @@ print(f'Training R²: {train_r2:.3f}')
 print(f'Test R²: {test_r2:.3f}')
 ```
 
+![Model performance comparison](https://i-blog.csdnimg.cn/blog_migrate/11602709ae81bf6a083d52c36e69b283.png#pic_center)
+
+*Figure 2: Comparison of prediction performance metrics (RMSE and R²) for different regression models across training and test sets.*
+
+![Learning curves showing model convergence](https://i-blog.csdnimg.cn/blog_migrate/acfd9f28b9ffe97e94aba4136752dee0.png#pic_center)
+
+*Figure 3: Learning curves demonstrating how model performance improves with increasing training data size.*
+
 ### Cross-Validation Analysis
 
 
@@ -197,6 +209,10 @@ plt.tight_layout()
 plt.show()
 ```
 
+![Feature importance ranking](https://i-blog.csdnimg.cn/blog_migrate/7ef03e7466c4db0e6bfc9ad23a4af72d.png#pic_center)
+
+*Figure 4: Feature importance analysis showing the relative contribution of each descriptor to d-band center prediction. Density difference and enthalpy of fusion are the most influential features.*
+
 ### Prediction vs. Actual Plot
 
 
@@ -214,6 +230,14 @@ plt.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 ```
+
+![Predicted vs actual d-band centers](https://i-blog.csdnimg.cn/blog_migrate/15532faaa18e68d923d98b87a1c1b6b2.png#pic_center)
+
+*Figure 5: Scatter plot of predicted vs. actual d-band centers for both training and test sets. The strong alignment with the diagonal line demonstrates excellent prediction accuracy.*
+
+![Prediction errors by metal system](https://i-blog.csdnimg.cn/blog_migrate/78074f4d86f13544df01fb90c16dea32.png#pic_center)
+
+*Figure 6: Distribution of prediction errors across different bimetallic systems, showing consistent performance across the full range of d-band centers.*
 
 ## Results and Discussion
 

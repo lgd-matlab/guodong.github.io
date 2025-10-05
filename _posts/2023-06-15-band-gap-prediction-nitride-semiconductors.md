@@ -234,6 +234,10 @@ ax[0].set_ylabel('LOOCV RMSE of band offset prediction (eV)',fontsize=14)
 ax[1].set_ylabel('LOOCV RMSE of band gap prediction (eV)',fontsize=14)
 ```
 
+![LOOCV RMSE curves for band offset and band gap prediction](https://i-blog.csdnimg.cn/blog_migrate/0a768982c3f22c5e27e1eb9fd4dc1791.png#pic_center)
+
+*Figure 1: Leave-one-out cross-validation RMSE as a function of subset size for (left) band offset and (right) band gap prediction. The fitting curves follow power law relationships.*
+
 ## Training Set and Test Set Splitting
 
 
@@ -306,11 +310,19 @@ def final_rmse(model,param,X_train,y_train,X_train_sub,y_train_sub,X_val,y_val):
     return RMSE,y_train_pred,y_val_pred
 ```
 
+![Band offset prediction comparison for three SVR kernel types](https://i-blog.csdnimg.cn/blog_migrate/fec13d8489d5b10e6a1f84c2844eb36e.png#pic_center)
+
+*Figure 2: Predicted vs. calculated band offset for Linear, Polynomial, and RBF SVR models. Training set (blue) and validation set (gold) are shown. The RBF kernel achieves the best performance.*
+
 ## Band Gap Regression
 
 ### 18-Features RMSE
 
 The model performance is evaluated using Root Mean Square Error (RMSE) and R² metrics.
+
+![Band gap prediction comparison for three SVR kernel types](https://i-blog.csdnimg.cn/blog_migrate/156229ab3b3da2d05d5c3b4c388a686a.png#pic_center)
+
+*Figure 3: Predicted vs. calculated band gap for Linear, Polynomial, and RBF SVR models using 18 features. The RBF kernel shows superior predictive capability.*
 
 ### 19-Features RMSE
 
@@ -327,6 +339,16 @@ X_19.shape
 
 
     (300, 19)
+
+
+
+![Comparison of 18-feature vs 19-feature models](https://i-blog.csdnimg.cn/blog_migrate/0f053f60dd9c616d9577570e8fa55084.png#pic_center)
+
+*Figure 4: Predicted vs. calculated band gap comparison between 18-feature models (top row) and 19-feature models with added PBE feature (bottom row). The addition of the PBE feature significantly improves prediction accuracy across all three kernel types.*
+
+![Prediction error distribution for 18-feature vs 19-feature models](https://i-blog.csdnimg.cn/blog_migrate/692969f2f40049ab543751b3bb9a9dd6.png#pic_center)
+
+*Figure 5: Prediction error distribution showing substantial improvement when PBE feature is included. The 19-feature models (bottom row) show much tighter error distributions centered around zero.*
 
 
 
@@ -386,6 +408,10 @@ import seaborn as sns
 sns.displot(band_gap,bins=33,color='gold',kde=True)
 ```
 
+![Band gap distribution histogram](https://i-blog.csdnimg.cn/blog_migrate/14824b3c9c5afa15fdd2b0d56f42d48e.png#pic_center)
+
+*Figure 6: Distribution of band gap values for 67,923 nitride semiconductors with Gaussian kernel density estimation overlay.*
+
 
 ```python
 band_off=df_tol.iloc[:,1]
@@ -396,6 +422,10 @@ band_off=df_tol.iloc[:,1]
 # Band offset distribution
 sns.displot(band_off,bins=26,color='gray',kde=True)
 ```
+
+![Band offset distribution histogram](https://i-blog.csdnimg.cn/blog_migrate/3c1c4b35f35c8cad83fb1b8833329202.png#pic_center)
+
+*Figure 7: Distribution of band offset values showing the range and frequency of occurrence across the entire dataset.*
 
 ## Summary
 

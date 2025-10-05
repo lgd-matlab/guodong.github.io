@@ -293,6 +293,10 @@ sns.scatterplot(y,cross_val_predict(lr,X,y,cv=crossvalidation))
 plt.plot(np.arange(0,400,1),np.arange(0,400,1),'r--')
 ```
 
+![Linear regression predictions vs actual](https://i-blog.csdnimg.cn/blog_migrate/6634dc7056b32d5ce1d71d4630d1ee68.png#pic_center)
+
+*Figure 1: Linear regression cross-validation predictions vs. actual bulk modulus values. The red dashed line represents perfect prediction.*
+
 ### Try a Random Forest Model
 
 
@@ -350,6 +354,10 @@ plt.scatter(y,cross_val_predict(rf,X,y,cv=crossvalidation),cmap=cm,c=data['poiss
 plt.plot(np.arange(0,400,1),np.arange(0,400,1),'r--')
 plt.colorbar()
 ```
+
+![Random forest predictions colored by Poisson ratio](https://i-blog.csdnimg.cn/blog_migrate/c6e90211af54519d2d98185b50b8af65.png#pic_center)
+
+*Figure 2: Random forest cross-validation predictions vs. actual bulk modulus, with points colored by Poisson ratio. The Random Forest model shows significantly improved performance over linear regression.*
 
 ### Split Training and Test Sets
 
@@ -415,6 +423,10 @@ sns.histplot(x=y_test-rf_reg.predict(X_test),stat='probability',color='b',
 plt.legend(loc='best')
 ```
 
+![Prediction error distribution](https://i-blog.csdnimg.cn/blog_migrate/6a8cef60b458e000730d05a89a46b5ff.png#pic_center)
+
+*Figure 3: Distribution of prediction errors for training (red) and test (blue) sets. Both distributions are centered near zero, indicating unbiased predictions with good generalization.*
+
 ### Feature Importance Analysis
 
 Let's examine what are the most important features used by the random forest model.
@@ -443,6 +455,10 @@ chart=sns.barplot(x=included[indices][0:15],y=importances[indices][0:15],
 chart.set_xticklabels(chart.get_xticklabels(),
                       rotation=90, horizontalalignment='right')
 ```
+
+![Feature importance for bulk modulus prediction](https://i-blog.csdnimg.cn/blog_migrate/3870e71a0ecc26b00b176fe71a66831f.png#pic_center)
+
+*Figure 4: Top 15 most important features for predicting bulk modulus. Melting temperature-related features and volume per atom (vpa) are the most influential predictors.*
 
 ## Summary
 
