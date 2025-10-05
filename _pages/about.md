@@ -23,6 +23,15 @@ My research focuses on computational materials science with specific interests i
 - **High-Throughput Computations**: Implementing automated workflows for large-scale materials screening
 - **Molecular Dynamics**: Developing reactive force fields (ReaxFF) for complex material systems
 
+## Personal Interests
+
+Beyond computational research, I am passionate about:
+
+- **Open Science & Knowledge Sharing**: I maintain this website and blog to share tutorials and insights on computational materials science techniques, including VASP, LAMMPS, and machine learning methods. I believe in making scientific knowledge accessible to the broader research community.
+- **Scientific Computing**: Exploring new computational methods and tools to improve research efficiency and reproducibility. I enjoy learning about emerging technologies in scientific computing and high-performance computing.
+- **Interdisciplinary Research**: Bridging materials science with data science and computational physics. I'm particularly interested in how machine learning can accelerate materials discovery and provide physical insights.
+- **Reproducible Research**: Advocating for best practices in computational research, including code sharing, detailed documentation, and reproducibility standards in computational materials science.
+
 ## Technical Skills
 
 **Computational Tools**:
