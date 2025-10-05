@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hello! I'm Guodong Lu (卢国栋), a Research Assistant at Hunan University in Changsha, China. I specialize in computational materials science with a focus on machine learning applications in materials design and first-principles calculations.
+Hello! I'm Guodong Lu (鲁国栋), a Research Assistant at Hunan University in Changsha, China. I specialize in computational materials science with a focus on machine learning applications in materials design and first-principles calculations.
 
 ## Education & Experience
 
@@ -17,11 +17,10 @@ I earned my M.S. in Materials Science and Engineering from Hunan University (Jun
 
 My research focuses on computational materials science with specific interests in:
 
-- **Machine Learning in Materials Science**: Developing interpretable ML models (SISSO, SHAP) to predict material properties and behaviors
+- **Machine Learning in Materials Science**: Active learning, interpretable ML models (SISSO, SHAP), and data-driven materials discovery
 - **First-Principles Calculations**: Using DFT (VASP) to investigate atomic-scale interactions in metallic systems
-- **Nuclear Materials**: Studying corrosion mechanisms, defect behavior, and alloy design in zirconium-based materials
 - **High-Throughput Computations**: Implementing automated workflows for large-scale materials screening
-- **Molecular Dynamics**: Developing reactive force fields (ReaxFF) for complex material systems
+- **Molecular Dynamics**: Large-scale atomistic simulations for complex material systems
 
 ## Personal Interests
 
@@ -37,7 +36,7 @@ Beyond computational research, I am passionate about:
 **Computational Tools**:
 - **First-principles**: VASP, AFLOW, Elastool
 - **Machine Learning**: scikit-learn, ASE, pymatgen, SHAP, SISSO
-- **Molecular Dynamics**: LAMMPS, ReaxFF
+- **Molecular Dynamics**: LAMMPS
 - **Programming**: Python (advanced), Shell scripting
 - **High-Performance Computing**: Experience with parallel computing and cluster environments
 
