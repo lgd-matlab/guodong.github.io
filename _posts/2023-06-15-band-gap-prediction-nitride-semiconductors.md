@@ -8,7 +8,7 @@ tags:
   - semiconductors
   - DFT
 categories:
-  - Research
+  - DFT
   - Machine Learning
 ---
 

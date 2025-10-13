@@ -9,8 +9,8 @@ tags:
   - matminer
   - DFT
 categories:
-  - Research
-  - Materials Informatics
+  - DFT
+  - Machine Learning
 ---
 
 # Bulk Modulus Prediction Using Machine Learning

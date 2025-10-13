@@ -9,8 +9,8 @@ tags:
   - transition metals
   - materials science
 categories:
-  - Research
-  - Computational Catalysis
+  - DFT
+  - Machine Learning
 ---
 
 # Predicting d-Band Center of Transition Metals Using Machine Learning

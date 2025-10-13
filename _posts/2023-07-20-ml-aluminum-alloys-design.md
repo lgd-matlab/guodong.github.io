@@ -8,7 +8,6 @@ tags:
   - aluminum alloys
   - mechanical properties
 categories:
-  - Research
   - Machine Learning
 ---
 
