@@ -9,7 +9,6 @@ tags:
   - transition metals
   - materials science
 categories:
-  - DFT
   - Machine Learning
 ---
 

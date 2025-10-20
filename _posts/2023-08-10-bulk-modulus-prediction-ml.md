@@ -9,7 +9,6 @@ tags:
   - matminer
   - DFT
 categories:
-  - DFT
   - Machine Learning
 ---
 
