@@ -30,6 +30,10 @@ Beyond research, I enjoy a variety of activities that help me maintain balance a
 
 - **Self-Hosted Projects**: I enjoy experimenting with GitHub projects on my personal server. It's a fun way to explore new technologies, practice deployment skills, and learn about server management outside of my research work.
 
+## Contact
+
+Feel free to reach out to me at [djtulgd@gmail.com](mailto:djtulgd@gmail.com) or connect with me on [GitHub](https://github.com/lgd-matlab). I'm always interested in discussing computational materials science, machine learning applications, and potential collaborations.
+
 ---
 
 For detailed information about my education, publications, research experience, and professional achievements, please visit my [CV](/cv/) page.
