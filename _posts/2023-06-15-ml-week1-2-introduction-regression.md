@@ -6,6 +6,8 @@ tags:
   - machine-learning
   - supervised-learning
   - linear-regression
+categories:
+  - Machine Learning
 ---
 
 This post covers the foundational concepts of machine learning, including supervised and unsupervised learning, with a deep dive into linear regression and gradient descent algorithms.

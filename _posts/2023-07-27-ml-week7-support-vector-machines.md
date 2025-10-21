@@ -7,6 +7,8 @@ tags:
   - support-vector-machines
   - classification
   - kernels
+categories:
+  - Machine Learning
 ---
 
 This post covers Support Vector Machines (SVMs), one of the most powerful supervised learning algorithms, including the math behind large margin classification and kernel methods.

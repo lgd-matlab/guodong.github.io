@@ -8,6 +8,8 @@ tags:
   - clustering
   - dimensionality-reduction
   - pca
+categories:
+  - Machine Learning
 ---
 
 This post explores unsupervised learning techniques including K-means clustering and Principal Component Analysis (PCA) for dimensionality reduction.

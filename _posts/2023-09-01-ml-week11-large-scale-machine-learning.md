@@ -8,6 +8,8 @@ tags:
   - stochastic-gradient-descent
   - online-learning
   - scalability
+categories:
+  - Machine Learning
 ---
 
 This post covers techniques for training machine learning models efficiently on massive datasets, including stochastic gradient descent and online learning.

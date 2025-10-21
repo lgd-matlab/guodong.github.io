@@ -7,6 +7,8 @@ tags:
   - anomaly-detection
   - recommender-systems
   - collaborative-filtering
+categories:
+  - Machine Learning
 ---
 
 This post covers two important applications: anomaly detection for identifying unusual patterns and recommender systems for personalized predictions.

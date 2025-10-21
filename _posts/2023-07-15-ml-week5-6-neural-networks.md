@@ -7,6 +7,8 @@ tags:
   - neural-networks
   - deep-learning
   - backpropagation
+categories:
+  - Machine Learning
 ---
 
 This post explores neural networks, from their biological inspiration to practical implementation of learning algorithms including backpropagation.

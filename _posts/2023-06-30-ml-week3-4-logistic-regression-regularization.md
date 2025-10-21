@@ -7,6 +7,8 @@ tags:
   - classification
   - logistic-regression
   - regularization
+categories:
+  - Machine Learning
 ---
 
 This post explores classification problems through logistic regression and introduces regularization techniques to prevent overfitting.
