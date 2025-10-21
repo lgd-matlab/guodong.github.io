@@ -44,6 +44,8 @@ $$g(z) = \frac{1}{1 + e^{-z}}$$
 - As z → ∞, g(z) → 1
 - As z → -∞, g(z) → 0
 
+![Sigmoid Function](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802155105.png)
+
 **Logistic Regression Hypothesis**:
 $$h_\theta(x) = g(\theta^T x) = \frac{1}{1 + e^{-\theta^T x}}$$
 
@@ -64,17 +66,25 @@ $$h_\theta(x) = P(y=1 | x; \theta)$$
 **Linear Decision Boundary Example**:
 If h_θ(x) = g(θ₀ + θ₁x₁ + θ₂x₂) with θ = [-3, 1, 1]ᵀ
 
+![Model Parameters Example](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802155842.png)
+
 Decision boundary: x₁ + x₂ = 3 (a straight line)
+
+![Linear Decision Boundary](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802155904.png)
 
 **Non-linear Decision Boundary**:
 With polynomial features: h_θ(x) = g(θ₀ + θ₁x₁ + θ₂x₂ + θ₃x₁² + θ₄x₂²)
 
 If θ = [-1, 0, 0, 1, 1]ᵀ, decision boundary: x₁² + x₂² = 1 (a circle)
 
+![Non-linear Data Distribution](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802155939.png)
+
 ### Cost Function
 
 **Why not use squared error?**
 The squared error cost function with logistic hypothesis is **non-convex**, leading to many local minima.
+
+![Non-convex Function](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802161058.png)
 
 **Logistic Regression Cost Function**:
 $$Cost(h_\theta(x), y) = \begin{cases}
@@ -89,6 +99,8 @@ $$Cost(h_\theta(x), y) = \begin{cases}
 - When y = 0:
   - Cost → 0 as h_θ(x) → 0 (correct prediction)
   - Cost → ∞ as h_θ(x) → 1 (very wrong prediction)
+
+![Cost Function Visualization](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802162444.png)
 
 **Simplified Cost Function**:
 $$J(\theta) = -\frac{1}{m} \sum_{i=1}^{m} [y^{(i)} \log(h_\theta(x^{(i)})) + (1-y^{(i)}) \log(1 - h_\theta(x^{(i)}))]$$
@@ -136,6 +148,8 @@ Beyond gradient descent, more sophisticated algorithms exist:
 
 $$\text{prediction} = \max_i h_\theta^{(i)}(x)$$
 
+![One-vs-All Classification](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802172711.png)
+
 ## Regularization
 
 ### The Problem of Overfitting
@@ -148,6 +162,8 @@ $$\text{prediction} = \max_i h_\theta^{(i)}(x)$$
 - Linear (underfit): Misses the curve
 - Quadratic (just right): Fits well
 - High-degree polynomial (overfit): Passes through all points but wiggles unreasonably
+
+![Three Types of Fitting](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802173733.png)
 
 **Addressing Overfitting**:
 1. Reduce number of features
@@ -172,6 +188,8 @@ Where:
 - λ too small → Overfitting
 - By convention, don't regularize θ₀
 
+![Regularization Effect Comparison](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240803192731.png)
+
 ### Regularized Linear Regression
 
 **Gradient Descent Update**:
@@ -191,6 +209,8 @@ The factor (1 - α λ/m) < 1 shrinks θⱼ on each iteration.
 $$\theta = (X^T X + \lambda L)^{-1} X^T y$$
 
 Where L is an (n+1) × (n+1) matrix with 0 in top-left and 1s on the rest of diagonal.
+
+![Normal Equation Regularization Matrix](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240803193100.png)
 
 **Benefit**: This formula is always invertible when λ > 0!
 

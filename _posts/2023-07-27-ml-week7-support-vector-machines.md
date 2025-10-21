@@ -24,11 +24,20 @@ This post covers Support Vector Machines (SVMs), one of the most powerful superv
   - If y=0: -log(1 - h_θ(x))
 
 **SVM Modification**:
+
+![Sigmoid vs Hinge Loss](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507251556940.png)
+
+
+![Cost Function y=1](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507251611991.png)
+
 Replace smooth log curves with piecewise linear "hinge loss":
 - cost₁(z): For y=1, penalizes when z < 1 (not just z < 0)
 - cost₀(z): For y=0, penalizes when z > -1 (not just z > 0)
 
 **SVM Optimization Objective**:
+
+![SVM Cost Formulation](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507251612351.png)
+
 $$\min_\theta C \sum_{i=1}^{m} [y^{(i)}\text{cost}_1(\theta^T x^{(i)}) + (1-y^{(i)})\text{cost}_0(\theta^T x^{(i)})] + \frac{1}{2}\sum_{j=1}^{n}\theta_j^2$$
 
 Where:
@@ -47,6 +56,9 @@ Where:
 - For y=0: Wants θᵀx ≤ -1 (not just < 0)
 - Creates a "safety margin" beyond just correct classification
 
+![Margin Requirements](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507251612481.png)
+
+
 **When C is very large**:
 SVM tries to make all costs₀/cost₁ terms zero, simplifying to:
 $$\min_\theta \frac{1}{2}\sum_{j=1}^{n}\theta_j^2$$
@@ -63,11 +75,17 @@ This makes SVM a **Large Margin Classifier**.
 
 **C Parameter Effects**:
 - **Large C**: Small margin, low bias, high variance (may overfit to outliers)
+
+![Outliers Effect](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507251615498.png)
+
 - **Small C**: Large margin, high bias, low variance (more robust to outliers)
 
 ### Mathematics of Large Margin (Optional)
 
 **Vector Inner Product Review**:
+
+![Vector Projection](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507251615355.png)
+
 - u·v = ||u|| × ||v|| × cos(θ)
 - u·v = p × ||u|| where p = signed projection of v onto u
 
@@ -91,6 +109,9 @@ Where p⁽ⁱ⁾ = projection of x⁽ⁱ⁾ onto θ
 Instead of polynomial features, use **similarity functions** (kernels)
 
 **Example: Gaussian Kernel (RBF)**:
+
+![Gaussian Kernel](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507251617169.png)
+
 $$f_i = \text{similarity}(x, l^{(i)}) = \exp\left(-\frac{||x - l^{(i)}||^2}{2\sigma^2}\right)$$
 
 Where:
@@ -106,6 +127,9 @@ Where:
 
 **Choosing Landmarks**:
 Use training examples as landmarks:
+
+![Landmark Selection](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507251617102.png)
+
 - m landmarks: l⁽¹⁾ = x⁽¹⁾, l⁽²⁾ = x⁽²⁾, ..., l⁽ᵐ⁾ = x⁽ᵐ⁾
 - For each x, compute feature vector: f = [f₀, f₁, ..., f_m]ᵀ where f₀ = 1
 

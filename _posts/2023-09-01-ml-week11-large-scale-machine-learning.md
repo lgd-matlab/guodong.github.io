@@ -30,6 +30,9 @@ This post covers techniques for training machine learning models efficiently on 
 ### Do You Really Need All That Data?
 
 **Learning Curve Sanity Check**:
+
+![Learning Curves for Big Data](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507312241099.png)
+
 1. Train on small subset (e.g., m = 1,000)
 2. Plot learning curves (training and CV error vs. m)
 3. Analyze the curves:
@@ -41,6 +44,9 @@ This post covers techniques for training machine learning models efficiently on 
 - If curves show high bias → Add features or complexity before scaling
 
 ## Stochastic Gradient Descent (SGD)
+
+![SGD Path vs Batch GD](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507312242656.png)
+
 
 ### The Problem with Batch Gradient Descent
 
@@ -104,6 +110,9 @@ Repeat {
 **Challenge**: How to know if SGD is working?
 
 **Monitoring Cost**:
+
+![Monitoring SGD Convergence](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507312243107.png)
+
 - Compute cost(θ, (x⁽ⁱ⁾, y⁽ⁱ⁾)) before updating θ
 - Every 1000 iterations, plot average cost of last 1000 examples
 

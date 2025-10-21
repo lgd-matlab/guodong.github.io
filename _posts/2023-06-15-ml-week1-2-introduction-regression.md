@@ -31,11 +31,23 @@ This post covers the foundational concepts of machine learning, including superv
 
 **Supervised Learning**: Teaching computers with labeled data where "correct answers" are provided
 - **Regression**: Predicting continuous values (e.g., house prices)
+
+![Regression Example](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240731213446.png)
+
 - **Classification**: Predicting discrete categories (e.g., tumor diagnosis)
 
+![Classification Example](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240731213524.png)
+
+![Multi-feature Classification](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240731214001.png)
+
 **Unsupervised Learning**: Finding structure in unlabeled data
+
+![Unsupervised Learning](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240731215148.png)
+
 - **Clustering**: Grouping similar data points
 - **Applications**: Market segmentation, social network analysis, genomics
+
+![Cocktail Party Problem](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240731215750.png)
 
 ## Linear Regression with One Variable
 
@@ -45,11 +57,15 @@ This post covers the foundational concepts of machine learning, including superv
 - Training set: Historical housing data with prices
 - Goal: Learn a function h(x) that maps house size to predicted price
 
+![Housing Price Prediction](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240731220230.png)
+
 **Notation**:
 - m: Number of training examples
 - x: Input variable/features
 - y: Output variable/target
 - (x⁽ⁱ⁾, y⁽ⁱ⁾): i-th training example
+
+![Supervised Learning Process](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240731220303.png)
 
 **Hypothesis Function**:
 $$h_\theta(x) = \theta_0 + \theta_1x$$
@@ -65,9 +81,17 @@ $$J(\theta_0, \theta_1) = \frac{1}{2m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}
 
 **Goal**: Find θ₀ and θ₁ that minimize J(θ₀, θ₁)
 
+![Cost Function Simplified](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240801214157.png)
+
+![Cost Function 3D Surface](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240801214753.png)
+
+![Cost Function Contour](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240801214909.png)
+
 ### Gradient Descent
 
 Gradient descent is a general optimization algorithm for finding function minima.
+
+![Gradient Descent Visualization](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240801220720.png)
 
 **Algorithm**:
 Repeat until convergence {
@@ -79,11 +103,19 @@ Where:
 - The partial derivative indicates the direction of steepest ascent
 - **Important**: Update θ₀ and θ₁ simultaneously
 
+![Simultaneous Update](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802000528.png)
+
 **Learning Rate Effects**:
 - Too small α: Slow convergence
 - Too large α: May overshoot and fail to converge
 
+![Learning Rate Effects](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802001913.png)
+
 **Key Insight**: Even with fixed α, gradient descent converges automatically because the gradient decreases as we approach the minimum.
+
+![Derivative Intuition](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802001613.png)
+
+![Automatic Convergence](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802002316.png)
 
 ### Gradient Descent for Linear Regression
 
@@ -103,6 +135,8 @@ This is called **"Batch" Gradient Descent** because each step uses all training 
 - Dimension: rows × columns
 - Element notation: A_ij (row i, column j)
 
+![Matrix Definition](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802004008.png)
+
 **Vector**: Matrix with only one column (n × 1)
 - n-dimensional vector
 - Indexing: Can use 1-based or 0-based
@@ -111,15 +145,25 @@ This is called **"Batch" Gradient Descent** because each step uses all training 
 
 **Matrix Addition**: Element-wise addition (matrices must have same dimensions)
 
+![Matrix Addition](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802004409.png)
+
 **Scalar Multiplication**: Multiply each element by the scalar
+
+![Scalar Multiplication](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802004419.png)
 
 **Matrix-Vector Multiplication**:
 - m × n matrix times n × 1 vector gives m × 1 vector
 - Result_i = Row_i · Vector (dot product)
 
+![Matrix-Vector Multiplication](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802010232.png)
+
+![Matrix-Vector Example](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802005747.png)
+
 **Matrix-Matrix Multiplication**:
 - m × n matrix times n × o matrix gives m × o matrix
 - Result_ij = Row_i of A · Column_j of B
+
+![Matrix Multiplication](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802013716.png)
 
 **Properties**:
 - Not commutative: A × B ≠ B × A
@@ -170,6 +214,8 @@ $$\theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - 
 
 When features have very different ranges, gradient descent converges slowly.
 
+![Feature Scaling Problem](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802025625.png)
+
 **Solution: Mean Normalization**
 $$x_n = \frac{x_n - \mu_n}{s_n}$$
 
@@ -179,16 +225,22 @@ Where:
 
 **Goal**: Get all features into approximately [-1, 1] range
 
+![After Feature Scaling](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802025720.png)
+
 ### Learning Rate Selection
 
 **Monitoring Convergence**: Plot J(θ) vs. iteration number
 - Should decrease after every iteration
 - Can use automatic convergence test
 
+![Convergence Plot](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802032218.png)
+
 **Choosing α**:
 - If J(θ) increases: α is too large
 - If convergence is slow: α is too small
 - Try values: ..., 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, ...
+
+![Learning Rate Selection](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802032809.png)
 
 ### Polynomial Regression
 
@@ -209,6 +261,10 @@ Alternative to gradient descent - directly computes optimal θ in one step.
 $$\theta = (X^T X)^{-1} X^T y$$
 
 Where X is the design matrix (m × (n+1)) and y is the target vector (m × 1).
+
+![Normal Equation Example](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802034046.png)
+
+![Normal Equation Matrix Form](https://notion-lgd.oss-cn-beijing.aliyuncs.com/20240802034304.png)
 
 **Comparison**:
 

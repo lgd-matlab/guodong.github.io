@@ -1,5 +1,8 @@
 ---
 title: 'Anomaly Detection and Recommender Systems'
+
+![Anomaly Detection Example](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507302226492.png)
+
 date: 2023-08-20
 permalink: /posts/2023/08/ml-week9-10-anomaly-detection-recommender-systems/
 tags:
@@ -35,6 +38,9 @@ This post covers two important applications: anomaly detection for identifying u
 
 ### Gaussian Distribution
 
+![Gaussian Distribution](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507302225193.png)
+
+
 **If x ~ N(μ, σ²)**:
 $$p(x; \mu, \sigma^2) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)$$
 
@@ -53,6 +59,9 @@ $$p(x) = \prod_{j=1}^{n}p(x_j; \mu_j, \sigma_j^2)$$
 
 **Steps**:
 1. Choose features xⱼ that might indicate anomalies
+
+![Feature Engineering](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507302230007.png)
+
 2. Fit parameters μⱼ, σⱼ² for each feature j
 3. For new example x:
    - Compute p(x) = ∏ⱼ p(xⱼ; μⱼ, σⱼ²)
@@ -115,6 +124,9 @@ If algorithm misses anomalies:
 
 ### Multivariate Gaussian Distribution
 
+![Multivariate Gaussian](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507302241008.png)
+
+
 **Motivation**: Capture feature correlations
 
 **Standard model limitation**: Features assumed independent
@@ -125,6 +137,9 @@ $$p(x; \mu, \Sigma) = \frac{1}{(2\pi)^{n/2}|\Sigma|^{1/2}}\exp\left(-\frac{1}{2}
 Parameters:
 - μ ∈ ℝⁿ: Mean vector
 - Σ ∈ ℝⁿˣⁿ: Covariance matrix
+
+![Rating Matrix](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507302249261.png)
+
 
 **Covariance Matrix Effects**:
 - Diagonal elements: Control variance of each feature
@@ -153,6 +168,9 @@ Parameters:
 
 ### Content-Based Recommendations
 
+![Content Based Filtering](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507302247496.png)
+
+
 **Assumption**: Have features for each movie
 
 **Example Features**:
@@ -172,6 +190,9 @@ $$\min_{\theta^{(1)},...,\theta^{(n_u)}} \frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,
 **Gradient Descent**: Same form as regularized linear regression
 
 ### Collaborative Filtering
+
+![Collaborative Filtering](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507302248367.png)
+
 
 **Key Insight**: Can learn both features x AND parameters θ!
 
@@ -193,6 +214,9 @@ Users collaborate to help system learn better features!
 
 ### Vectorization: Low Rank Matrix Factorization
 
+![Low Rank Factorization](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507302251572.png)
+
+
 **Rating Matrix Y**: n_m × n_u matrix
 
 **Prediction Matrix**:
@@ -210,6 +234,9 @@ Movie i similar to movie k if ||x⁽ⁱ⁾ - x⁽ᵏ⁾|| is small
 - Features learned automatically (may not be interpretable)
 
 ### Mean Normalization
+
+![Mean Normalization](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507302306036.png)
+
 
 **Problem**: New user Eve with no ratings
 - All r(i, Eve) = 0

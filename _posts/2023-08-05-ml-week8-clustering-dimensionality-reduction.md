@@ -1,5 +1,8 @@
 ---
 title: 'Unsupervised Learning: Clustering and Dimensionality Reduction'
+
+![Unsupervised Data](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507280857232.png)
+
 date: 2023-08-05
 permalink: /posts/2023/08/ml-week8-clustering-dimensionality-reduction/
 tags:
@@ -22,6 +25,9 @@ This post explores unsupervised learning techniques including K-means clustering
 
 **Clustering**: Automatically group data into cohesive clusters
 
+![Clustering Example](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507280908876.png)
+
+
 **Applications**:
 - Market segmentation (customer groups)
 - Social network analysis (friend circles)
@@ -30,6 +36,9 @@ This post explores unsupervised learning techniques including K-means clustering
 
 ### K-Means Algorithm
 
+![K-Means Step 0](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507280909646.png)
+
+
 **Goal**: Partition data into K distinct clusters
 
 **Algorithm Steps**:
@@ -37,8 +46,14 @@ This post explores unsupervised learning techniques including K-means clustering
 1. Randomly initialize K cluster centroids μ₁, μ₂, ..., μ_K
 2. Repeat until convergence:
    a. Cluster assignment: Assign each point to nearest centroid
+
+![K-Means Iteration 1](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507280909679.png)
+
       c⁽ⁱ⁾ = index of closest centroid to x⁽ⁱ⁾
    b. Move centroids: Update each centroid to mean of assigned points
+
+![K-Means Iteration 3](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507280909943.png)
+
       μ_k = average of points assigned to cluster k
 ```
 
@@ -78,6 +93,9 @@ $$J(c, \mu) = \frac{1}{m}\sum_{i=1}^{m}||x^{(i)} - \mu_{c^{(i)}}||^2$$
 
 K-means can get stuck in local optima depending on initialization
 
+![Local Optima Problem](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507280912963.png)
+
+
 **Solution: Multiple Random Initializations**:
 ```python
 best_cost = infinity
@@ -95,6 +113,9 @@ Works well for small K (2-10), less benefit for larger K
 ### Choosing K
 
 **Elbow Method**:
+
+![Elbow Method](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507280912898.png)
+
 1. Run K-means for different K values
 2. Plot cost J vs. K
 3. Look for "elbow" where J starts decreasing slowly
@@ -103,6 +124,9 @@ Often ambiguous! No clear elbow in many datasets.
 
 **Better Approach**: Choose K based on downstream purpose
 - T-shirt sizes: K=3 (S, M, L) vs. K=5 (XS, S, M, L, XL)
+
+![T-shirt Application](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507280909335.png)
+
 - Evaluate which K better serves business goals
 
 ## Principal Component Analysis (PCA)
@@ -110,6 +134,9 @@ Often ambiguous! No clear elbow in many datasets.
 ### Motivation for Dimensionality Reduction
 
 **1. Data Compression**
+
+![2D to 1D](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507291703910.png)
+
 
 **Redundant Features Example**:
 - Length in cm and length in inches → 1D representation
@@ -123,7 +150,13 @@ Often ambiguous! No clear elbow in many datasets.
 
 Cannot visualize > 3 dimensions directly
 
+![Data Visualization](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507291712526.png)
+
+
 **Example**: Country data with 50 features (GDP, life expectancy, etc.)
+
+![Country Data](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507291711873.png)
+
 - Reduce to 2D or 3D
 - Plot and discover patterns (rich vs. poor countries)
 
@@ -132,6 +165,9 @@ Cannot visualize > 3 dimensions directly
 ### PCA Problem Formulation
 
 **Goal**: Find lower-dimensional surface that minimizes **projection error**
+
+![PCA Projection Error](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507291713207.png)
+
 
 **From n dimensions to k dimensions**:
 Find k vectors u⁽¹⁾, ..., u⁽ᵏ⁾ onto which to project data such that projection error is minimized
@@ -241,6 +277,9 @@ Where:
 - s(i) ∈ [-1, 1], higher is better
 
 **Adjusted Rand Index (ARI)**: Similarity between two clusterings, adjusted for chance
+
+![ARI Formula](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507280916332.png)
+
 
 ## Key Takeaways
 

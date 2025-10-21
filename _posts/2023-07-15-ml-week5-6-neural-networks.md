@@ -23,6 +23,9 @@ For complex non-linear problems, traditional methods face computational limitati
 - With 100 features, quadratic terms alone create ~5,000 new features
 - For cubic terms, this explodes even further
 - **Example**: 50×50 pixel grayscale image = 2,500 features
+
+![Computer Vision Challenge](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507142150654.png)
+
   - All quadratic terms ≈ 3 million features!
 
 **Computer Vision Challenge**: Recognizing cars in images requires handling massive feature spaces efficiently.
@@ -38,6 +41,9 @@ Remarkable neuroscience experiments suggest the brain uses a single learning alg
 
 **Modern Applications**:
 - **BrainPort**: Camera on forehead → electrode array on tongue → blind people learn to "see"
+
+![BrainPort System](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507142153160.png)
+
 - **Human Echolocation**: Blind individuals use tongue clicks to navigate like bats
 - **Haptic Belt**: Always points north → users develop direction sense
 
@@ -51,6 +57,9 @@ Remarkable neuroscience experiments suggest the brain uses a single learning alg
 - **Output**: Axon transmits signals (spikes)
 
 **Artificial Neuron (Logistic Unit)**:
+
+![Artificial Neuron Model](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507142158966.png)
+
 ```
 Inputs: x₁, x₂, x₃
 Bias: x₀ = 1
@@ -60,6 +69,9 @@ Output: h_θ(x)
 ```
 
 **Neural Network Architecture**:
+
+![Three Layer Network](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507142217608.png)
+
 - **Layer 1 (Input)**: Raw features [x₀, x₁, x₂, x₃]
 - **Layer 2 (Hidden)**: Computed features [a₀⁽²⁾, a₁⁽²⁾, a₂⁽²⁾, a₃⁽²⁾]
 - **Layer 3 (Output)**: Final prediction h_θ(x)
@@ -87,13 +99,22 @@ h_θ(x) = a⁽³⁾ = g(z⁽³⁾)
 ```
 
 **Key Insight**: Neural networks learn their own features!
+
+![NN Architecture Choice](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507251545674.png)
+
 - Hidden layer activations a⁽²⁾ are "learned features"
+
+![NN vs Logistic Regression](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507142216733.png)
+
 - More powerful than hand-crafted polynomial features
 - The network automatically discovers useful feature representations
 
 ### Neural Networks for Logic Functions
 
 **AND Function**:
+
+![AND Function Implementation](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507142215035.png)
+
 ```
 Θ⁽¹⁾ = [-30, 20, 20]
 h_θ(x) = g(-30 + 20x₁ + 20x₂)
@@ -113,6 +134,9 @@ h_θ(x₁) = g(10 - 20x₁)
 ```
 
 **XNOR (Complex Function)**:
+
+![XNOR Network Structure](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507142214098.png)
+
 Combine simpler functions in layers:
 - Layer 1: (x₁ AND x₂), (NOT x₁ AND NOT x₂)
 - Layer 2: OR of layer 1 outputs
@@ -120,6 +144,9 @@ Combine simpler functions in layers:
 This demonstrates how neural networks can learn arbitrarily complex functions through composition!
 
 ### Multiclass Classification
+
+![Multiclass Output Layer](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507142213311.png)
+
 
 **One-vs-All Extended**:
 For K classes, output layer has K units using one-hot encoding:
@@ -144,6 +171,9 @@ The network outputs a K-dimensional vector where h_θ(x)ᵢ ≈ P(y = i | x; θ)
 - K: Number of output units (classes)
 
 **Binary Classification** (K=1):
+
+![Binary vs Multiclass](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507151544759.png)
+
 - Output layer has 1 unit
 - y ∈ {0, 1}
 
@@ -152,15 +182,27 @@ The network outputs a K-dimensional vector where h_θ(x)ᵢ ≈ P(y = i | x; θ)
 - y ∈ ℝᴷ (one-hot vector)
 
 **Neural Network Cost Function**:
+
+![NN Cost Function](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507151544916.png)
+
 $$J(\Theta) = -\frac{1}{m} \sum_{i=1}^{m} \sum_{k=1}^{K} [y_k^{(i)} \log(h_\Theta(x^{(i)}))_k + (1-y_k^{(i)}) \log(1-(h_\Theta(x^{(i)}))_k)]$$
 $$+ \frac{\lambda}{2m} \sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} (\Theta_{ji}^{(l)})^2$$
 
 This is a generalization of logistic regression cost:
+
+![Logistic Regression Cost](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507151544035.png)
+
 - Sum over all K output units
 - Sum over all m training examples
 - Regularization term sums over all network weights (excluding bias terms)
 
+![Lambda Effects](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507251543918.png)
+
+
 ### Backpropagation Algorithm
+
+![Backpropagation Algorithm](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507151545780.png)
+
 
 **The Challenge**: Computing ∂J/∂Θᵢⱼ⁽ˡ⁾ efficiently
 
@@ -199,6 +241,9 @@ Initialize: Δ⁽ˡ⁾ = 0 (for all l)
 
 for i = 1 to m:
     # Forward propagation
+
+![Forward Propagation](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507151545025.png)
+
     Compute a⁽ˡ⁾ for all layers
 
     # Backward propagation
@@ -213,6 +258,9 @@ Dᵢⱼ⁽ˡ⁾ = (1/m)Δᵢⱼ⁽ˡ⁾                  (if j = 0)
 ```
 
 ### Gradient Checking
+
+![Gradient Checking Formula](https://raw.githubusercontent.com/lgd-matlab/lgd-image/main/img/202507151547856.png)
+
 
 **Purpose**: Verify backpropagation implementation is correct
 
