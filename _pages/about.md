@@ -24,12 +24,13 @@ My research focuses on computational materials science with specific interests i
 
 ## Personal Interests
 
-Beyond computational research, I am passionate about:
+Beyond research, I enjoy a variety of activities that help me maintain balance and perspective:
 
-- **Open Science & Knowledge Sharing**: I maintain this website and blog to share tutorials and insights on computational materials science techniques, including VASP, LAMMPS, and machine learning methods. I believe in making scientific knowledge accessible to the broader research community.
-- **Scientific Computing**: Exploring new computational methods and tools to improve research efficiency and reproducibility. I enjoy learning about emerging technologies in scientific computing and high-performance computing.
-- **Interdisciplinary Research**: Bridging materials science with data science and computational physics. I'm particularly interested in how machine learning can accelerate materials discovery and provide physical insights.
-- **Reproducible Research**: Advocating for best practices in computational research, including code sharing, detailed documentation, and reproducibility standards in computational materials science.
+- **History & Knowledge Organization**: I'm an avid reader of history books, with particular interests in world history, military history, and Chinese history. I also enjoy books on time management and knowledge organization systems, which help me stay productive and organized in both research and daily life.
+
+- **Sports & Fitness**: I play table tennis (ping-pong) regularly and visit the gym to exercise. Physical activity helps me stay energetic and manage stress, especially during challenging research periods. Staying active keeps my mind sharp and focused.
+
+- **Self-Hosted Projects**: I enjoy experimenting with GitHub projects on my personal server. It's a fun way to explore new technologies, practice deployment skills, and learn about server management outside of my research work.
 
 ## Technical Skills
 
