@@ -2,14 +2,12 @@
 permalink: /
 title: "About Me"
 author_profile: true
-redirect_from: 
+redirect_from:
   - /about/
   - /about.html
 ---
 
 Hello! I'm Guodong Lu (鲁国栋), a Research Assistant at Hunan University in Changsha, China. I specialize in computational materials science with a focus on machine learning applications in materials design and first-principles calculations.
-
-## Education & Experience
 
 I earned my M.S. in Materials Science and Engineering from Hunan University (June 2025, GPA: 3.68/4.0) and my B.S. from Dalian Jiaotong University (June 2022, GPA: 86.61/100). Currently, I continue my research as a Research Assistant at Hunan University (August 2025 - Present).
 
@@ -32,28 +30,6 @@ Beyond research, I enjoy a variety of activities that help me maintain balance a
 
 - **Self-Hosted Projects**: I enjoy experimenting with GitHub projects on my personal server. It's a fun way to explore new technologies, practice deployment skills, and learn about server management outside of my research work.
 
-## Technical Skills
+---
 
-**Computational Tools**:
-- **First-principles**: VASP, AFLOW, Elastool
-- **Machine Learning**: scikit-learn, ASE, pymatgen, SHAP, SISSO
-- **Molecular Dynamics**: LAMMPS
-- **Programming**: Python (advanced), Shell scripting
-- **High-Performance Computing**: Experience with parallel computing and cluster environments
-
-**Languages**: English (Fluent, IELTS 6.5), Chinese (Native)
-
-## Selected Publications
-
-I have published 5 peer-reviewed articles (including 2 as first author and 1 as co-first author) in journals such as *Advanced Functional Materials*, *Journal of Nuclear Materials*, *Computational Materials Science*, and *Materials & Design*. Please visit the [Publications](/publications/) page for complete details.
-
-## Honors & Awards
-
-- Outstanding Graduate of Hunan University (2025)
-- National Graduate Scholarship (2024)
-- Outstanding Graduate of Dalian City (2022)
-- First Prize, National College Students Mathematics Competition, Liaoning Province (2021)
-
-## Contact
-
-Feel free to reach out to me at [djtulgd@gmail.com](mailto:djtulgd@gmail.com) or connect with me on [GitHub](https://github.com/lgd-matlab). I'm always interested in discussing computational materials science, machine learning applications, and potential collaborations.
+For detailed information about my education, publications, research experience, and professional achievements, please visit my [CV](/cv/) page.

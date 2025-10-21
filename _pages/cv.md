@@ -118,3 +118,9 @@ Honors & Awards
 ======
 * Outstanding Graduate of Hunan University, 2025
 * National Graduate Scholarship, 2024
+* Outstanding Graduate of Dalian City, 2022
+* First Prize, National College Students Mathematics Competition, Liaoning Province, 2021
+
+Contact
+======
+Feel free to reach out to me at [djtulgd@gmail.com](mailto:djtulgd@gmail.com) or connect with me on [GitHub](https://github.com/lgd-matlab). I'm always interested in discussing computational materials science, machine learning applications, and potential collaborations.
