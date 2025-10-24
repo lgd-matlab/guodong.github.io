@@ -8,7 +8,7 @@ date: 2025-01-01
 venue: 'Materials & Design'
 paperurl: 'https://doi.org/10.1016/j.matdes.2025.114747'
 citation: 'Lu, G., Qiu, X., Liu, Z., Wang, D., Wei, T., Zhao, Y., Hu, W., & Deng, H. (2025). &quot;Machine learning method to investigate the influence of alloy elements on non-metal interstitials in HCP metals.&quot; <i>Materials & Design</i>. DOI: 10.1016/j.matdes.2025.114747'
-citations: 0
+citations: 2
 ---
 
 ## Abstract

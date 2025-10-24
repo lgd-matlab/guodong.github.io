@@ -1,25 +1,39 @@
 /**
- * Citation Count Fetcher for Google Scholar
- * This script fetches real-time citation counts for publications
+ * Citation Count Fetcher using OpenAlex API
+ * This script fetches real-time citation counts from OpenAlex for publications
+ * OpenAlex API: https://docs.openalex.org/
  */
 
 (function() {
   'use strict';
 
   // Configuration
+  const OPENALEX_API_BASE = 'https://api.openalex.org';
   const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
-  const CACHE_KEY_PREFIX = 'citation_count_';
+  const CACHE_KEY_PREFIX = 'openalex_citation_';
+  const REQUEST_DELAY = 200; // ms delay between requests to be polite to the API
+
+  /**
+   * Extract DOI from URL (handles both full URL and DOI string)
+   */
+  function extractDOI(doiString) {
+    if (!doiString) return null;
+    
+    // If it's a full URL, extract the DOI part
+    const doiMatch = doiString.match(/10\.\d{4,}(?:\.\d+)*\/(?:(?!["&'<>])\S)+/);
+    return doiMatch ? doiMatch[0] : null;
+  }
 
   /**
    * Get cached citation count if available and not expired
    */
-  function getCachedCount(scholarId) {
+  function getCachedCount(doi) {
     try {
-      const cached = localStorage.getItem(CACHE_KEY_PREFIX + scholarId);
+      const cached = localStorage.getItem(CACHE_KEY_PREFIX + doi);
       if (cached) {
         const data = JSON.parse(cached);
         if (Date.now() - data.timestamp < CACHE_DURATION) {
-          return data.count;
+          return data;
         }
       }
     } catch (e) {
@@ -29,12 +43,13 @@
   }
 
   /**
-   * Cache citation count
+   * Cache citation count and metadata
    */
-  function setCachedCount(scholarId, count) {
+  function setCachedCount(doi, citationCount, openalexUrl) {
     try {
-      localStorage.setItem(CACHE_KEY_PREFIX + scholarId, JSON.stringify({
-        count: count,
+      localStorage.setItem(CACHE_KEY_PREFIX + doi, JSON.stringify({
+        count: citationCount,
+        openalexUrl: openalexUrl,
         timestamp: Date.now()
       }));
     } catch (e) {
@@ -43,28 +58,49 @@
   }
 
   /**
-   * Fetch citation count from Google Scholar via proxy/API
-   * Note: Direct fetching from Google Scholar is blocked by CORS
-   * This is a placeholder - you'll need to implement a backend proxy
+   * Fetch citation count from OpenAlex API
+   * @param {string} doi - The DOI of the work
+   * @returns {Promise<Object>} Object with citation count and OpenAlex URL
    */
-  async function fetchCitationCount(scholarId) {
+  async function fetchCitationFromOpenAlex(doi) {
     // Check cache first
-    const cached = getCachedCount(scholarId);
+    const cached = getCachedCount(doi);
     if (cached !== null) {
+      console.log(`Using cached citation count for DOI: ${doi}`);
       return cached;
     }
 
     try {
-      // Option 1: Use your own backend proxy
-      // const response = await fetch(`/api/citations/${scholarId}`);
+      // Query OpenAlex by DOI
+      const url = `${OPENALEX_API_BASE}/works/https://doi.org/${doi}`;
+      console.log(`Fetching citation count from OpenAlex: ${url}`);
       
-      // Option 2: Use Semantic Scholar API (if DOI available)
-      // const response = await fetch(`https://api.semanticscholar.org/v1/paper/${doi}`);
+      const response = await fetch(url, {
+        headers: {
+          'User-Agent': 'mailto:djtulgd@gmail.com', // Polite API usage
+        }
+      });
+
+      if (!response.ok) {
+        console.error(`OpenAlex API error for DOI ${doi}: ${response.status}`);
+        return null;
+      }
+
+      const data = await response.json();
       
-      // For now, return null to indicate manual update needed
-      return null;
+      const result = {
+        count: data.cited_by_count || 0,
+        openalexUrl: data.id || `https://openalex.org/works?filter=doi:${doi}`
+      };
+
+      // Cache the result
+      setCachedCount(doi, result.count, result.openalexUrl);
+      
+      console.log(`Citation count for DOI ${doi}: ${result.count}`);
+      return result;
+
     } catch (error) {
-      console.error('Error fetching citation count:', error);
+      console.error(`Error fetching citation count for DOI ${doi}:`, error);
       return null;
     }
   }
@@ -72,36 +108,79 @@
   /**
    * Update citation badge display
    */
-  function updateCitationBadge(element, count) {
-    const numberSpan = element.querySelector('.citation-number');
-    if (numberSpan) {
-      if (count !== null) {
-        numberSpan.textContent = count;
-        element.classList.add('loaded');
-      } else {
-        // If unable to fetch, show link to Google Scholar
-        numberSpan.textContent = 'View on Google Scholar';
+  function updateCitationBadge(badge, result) {
+    const numberSpan = badge.querySelector('.citation-number');
+    const link = badge.closest('a');
+    
+    if (!numberSpan) return;
+
+    if (result && result.count !== null && result.count !== undefined) {
+      // Update citation count
+      numberSpan.textContent = result.count;
+      badge.classList.add('loaded');
+      
+      // Update link to point to OpenAlex work page
+      if (link && result.openalexUrl) {
+        link.href = result.openalexUrl;
+        link.title = `View on OpenAlex (${result.count} citations)`;
       }
+    } else {
+      // If unable to fetch, show error message
+      numberSpan.textContent = 'N/A';
+      badge.classList.add('loaded');
+      badge.style.background = 'linear-gradient(135deg, #888 0%, #666 100%)';
     }
   }
 
   /**
-   * Initialize citation count fetching
+   * Initialize citation count fetching for all badges
    */
   async function initCitationCounts() {
-    const citationBadges = document.querySelectorAll('.citation-badge[id^="citation-"]');
+    const citationBadges = document.querySelectorAll('.citation-badge[data-doi]');
+    
+    if (citationBadges.length === 0) {
+      console.log('No citation badges with DOI found on this page');
+      return;
+    }
+
+    console.log(`Found ${citationBadges.length} publications to fetch citation counts for`);
     
     for (const badge of citationBadges) {
-      const scholarId = badge.id.replace('citation-', '');
+      const doiString = badge.getAttribute('data-doi');
+      const doi = extractDOI(doiString);
       
-      // Try to fetch citation count
-      const count = await fetchCitationCount(scholarId);
-      updateCitationBadge(badge, count);
+      if (!doi) {
+        console.warn('No valid DOI found for badge:', badge);
+        updateCitationBadge(badge, null);
+        continue;
+      }
       
-      // Small delay to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 100));
+      // Fetch citation count from OpenAlex
+      const result = await fetchCitationFromOpenAlex(doi);
+      updateCitationBadge(badge, result);
+      
+      // Small delay to be polite to the API
+      await new Promise(resolve => setTimeout(resolve, REQUEST_DELAY));
     }
+    
+    console.log('Citation count fetching complete');
   }
+
+  /**
+   * Clear cache (useful for debugging)
+   */
+  function clearCitationCache() {
+    const keys = Object.keys(localStorage);
+    keys.forEach(key => {
+      if (key.startsWith(CACHE_KEY_PREFIX)) {
+        localStorage.removeItem(key);
+      }
+    });
+    console.log('Citation cache cleared');
+  }
+
+  // Expose clearCache function globally for debugging
+  window.clearCitationCache = clearCitationCache;
 
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {

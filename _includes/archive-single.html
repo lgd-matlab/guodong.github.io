@@ -42,10 +42,10 @@
           <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'publications' %}
           <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
-          {% if post.google_scholar_id %}
+          {% if post.paperurl %}
             <p class="citation-count">
-              <a href="https://scholar.google.com/citations?view_op=view_citation&citation_for_view={{ post.google_scholar_id }}" target="_blank" style="text-decoration: none;">
-                <span class="citation-badge" id="citation-{{ post.google_scholar_id }}">
+              <a href="{{ post.paperurl }}" target="_blank" style="text-decoration: none;">
+                <span class="citation-badge" data-doi="{{ post.paperurl }}">
                   <i class="fa fa-quote-right" aria-hidden="true"></i> Citations: <span class="citation-number">Loading...</span>
                 </span>
               </a>

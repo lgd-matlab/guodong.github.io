@@ -8,7 +8,7 @@ date: 2024-04-01
 venue: 'Advanced Functional Materials'
 paperurl: 'https://doi.org/10.1002/adfm.202404976'
 citation: 'Wu, K., Lu, G.† (Co-first author), Huang, B., Hu, Z., Lv, Y., Younus, H. A., Wang, X., Liu, Z., & Zhang, S. (2024). &quot;Entropy-driven highly chaotic MXene-based heterostructures as an efficient sulfur redox electrocatalysts for Li-S battery.&quot; <i>Advanced Functional Materials</i>. DOI: 10.1002/adfm.202404976'
-citations: 17
+citations: 12
 ---
 
 ## Abstract

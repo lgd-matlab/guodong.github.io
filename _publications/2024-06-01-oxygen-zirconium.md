@@ -6,9 +6,9 @@ permalink: /publication/2024-06-01-oxygen-zirconium
 excerpt: 'This study employs DFT to analyze interactions between oxygen and alloying elements (Sn, Fe, Cr, Nb) in α-Zr, predicting their effects on oxygen diffusion based on theoretical models.'
 date: 2024-06-01
 venue: 'Journal of Nuclear Materials'
-paperurl: 'https://doi.org/10.1016/j.jnucmat.2024.154794'
-citation: 'Lu, G., Liu, Z., Hu, W., Wei, T., Zhao, Y., Wang, D., & Deng, H. (2024). &quot;First-principles investigation of the interaction between oxygen and alloy atoms in α-zirconium.&quot; <i>Journal of Nuclear Materials</i>. DOI: 10.1016/j.jnucmat.2024.154794'
-citations: 5
+paperurl: 'https://doi.org/10.1016/j.jnucmat.2024.155069'
+citation: 'Lu, G., Liu, Z., Hu, W., Wei, T., Zhao, Y., Wang, D., & Deng, H. (2024). &quot;First-principles investigation of the interaction between oxygen and alloy atoms in α-zirconium.&quot; <i>Journal of Nuclear Materials</i>. DOI: 10.1016/j.jnucmat.2024.155069'
+citations: 8
 ---
 
 ## Abstract
