@@ -14,4 +14,42 @@
 <link rel="icon" href="/images/favicon.ico"/>
 <meta name="theme-color" content="#ffffff"/>
 
+<!-- Flag Counter Widget Styling -->
+<style>
+  .flag-counter-widget {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .flag-counter-widget img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Dark theme support */
+  [data-theme="dark"] .flag-counter-widget {
+    background: rgba(40, 40, 40, 0.95);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .flag-counter-widget {
+      bottom: 10px;
+      left: 10px;
+      padding: 3px;
+    }
+    
+    .flag-counter-widget img {
+      max-width: 80%;
+    }
+  }
+</style>
+
 <!-- end custom head snippets -->
