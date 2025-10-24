@@ -8,6 +8,7 @@ date: 2024-06-01
 venue: 'Journal of Nuclear Materials'
 paperurl: 'https://doi.org/10.1016/j.jnucmat.2024.154794'
 citation: 'Lu, G., Liu, Z., Hu, W., Wei, T., Zhao, Y., Wang, D., & Deng, H. (2024). &quot;First-principles investigation of the interaction between oxygen and alloy atoms in α-zirconium.&quot; <i>Journal of Nuclear Materials</i>. DOI: 10.1016/j.jnucmat.2024.154794'
+citations: 5
 ---
 
 ## Abstract

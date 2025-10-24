@@ -42,6 +42,21 @@
           <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'publications' %}
           <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+          {% if post.google_scholar_id %}
+            <p class="citation-count">
+              <a href="https://scholar.google.com/citations?view_op=view_citation&citation_for_view={{ post.google_scholar_id }}" target="_blank" style="text-decoration: none;">
+                <span class="citation-badge" id="citation-{{ post.google_scholar_id }}">
+                  <i class="fa fa-quote-right" aria-hidden="true"></i> Citations: <span class="citation-number">Loading...</span>
+                </span>
+              </a>
+            </p>
+          {% elsif post.citations %}
+            <p class="citation-count">
+              <span class="citation-badge">
+                <i class="fa fa-quote-right" aria-hidden="true"></i> Citations: <span class="citation-number">{{ post.citations }}</span>
+              </span>
+            </p>
+          {% endif %}
         {% elsif post.date %}
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}

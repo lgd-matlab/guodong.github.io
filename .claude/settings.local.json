@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git pull:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate about page: add Personal Interests section\n\n- Added detailed personal interests section including:\n  - Open Science & Knowledge Sharing\n  - Scientific Computing\n  - Interdisciplinary Research\n  - Reproducible Research\n- Enhanced self-introduction to align with CV\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Read(//d/OneDrive/obsidian/template/obsidian-example-lifeos-chinese-version/obsidian-example-lifeos-chinese-version/1. 项目/申博/ML-article-replication/**)",
+      "Bash(git rm:*)",
+      "mcp__1mcp__firecrawl_1mcp_firecrawl_scrape",
+      "mcp__1mcp__firecrawl_1mcp_firecrawl_search",
+      "mcp__1mcp__duckduckgo_1mcp_search",
+      "mcp__1mcp__duckduckgo_1mcp_fetch_content",
+      "mcp__1mcp__fetch_1mcp_fetch",
+      "Bash(cd:*)",
+      "Bash(.specify/scripts/bash/check-prerequisites.sh:*)",
+      "Bash(bundle exec jekyll build:*)",
+      "mcp__1mcp__filesystem_1mcp_list_directory",
+      "Read(//d/OneDrive/obsidian/template/obsidian-example-lifeos-chinese-version/obsidian-example-lifeos-chinese-version/2. 领域/AI-for-science/《吴恩达机器学习》/**)",
+      "Bash(cat:*)",
+      "Bash(python:*)",
+      "mcp__1mcp__filesystem_1mcp_write_file",
+      "Read(//c/**)",
+      "Bash(\"C:\\Users\\lenovo\\Desktop\\academicpages\\guodong.github.io\\.specify\\scripts\\bash\\check-prerequisites.sh\" --json --require-tasks --include-tasks)",
+      "Bash(ruby -v:*)",
+      "Bash(gem -v:*)",
+      "Bash(bundle -v:*)",
+      "Bash(choco --version:*)",
+      "Bash(winget --version:*)",
+      "Bash(winget install:*)",
+      "Bash(bundle install:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -8,6 +8,7 @@ date: 2024-07-01
 venue: 'Computational Materials Science'
 paperurl: 'https://doi.org/10.1016/j.commatsci.2024.113035'
 citation: 'Li, R., Jiang, M., Zhang, X., Lu, G., Huang, Y., Liu, Z., Hu, W., Wang, D., Su, X., Wei, T., Zhao, Y., & Deng, H. (2024). &quot;Development of a Zr-Nb-H-O reactive force field for molecular dynamics simulations of in-reactor corrosion.&quot; <i>Computational Materials Science</i>. DOI: 10.1016/j.commatsci.2024.113035'
+citations: 5
 ---
 
 ## Abstract
