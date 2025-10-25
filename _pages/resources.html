@@ -1,0 +1,41 @@
+---
+layout: archive
+title: "Resources"
+permalink: /resources/
+author_profile: true
+---
+
+{% include base_path %}
+
+<h2>GitHub Projects</h2>
+
+{% assign repos = site.github.public_repositories | where_exp: "r", "r.owner.login == site.author.github" %}
+{% assign repos = repos | sort: "stargazers_count" | reverse %}
+
+{% if repos and repos.size > 0 %}
+  <div class="repo-list">
+  {% for repo in repos %}
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      <h3 class="archive__item-title" itemprop="headline">
+        <a href="{{ repo.html_url }}" target="_blank" rel="noopener">{{ repo.name }}</a>
+      </h3>
+      {% if repo.description %}
+        <p class="archive__item-excerpt" itemprop="description">{{ repo.description }}</p>
+      {% endif %}
+      <p class="page__meta">
+        {% if repo.language %}<span><i class="fa fa-code"></i> {{ repo.language }}</span>{% endif %}
+        <span style="margin-left:10px;"><i class="fa fa-star"></i> {{ repo.stargazers_count }}</span>
+        <span style="margin-left:10px;"><i class="fa fa-code-fork"></i> {{ repo.forks_count }}</span>
+        <span style="margin-left:10px;"><i class="fa fa-refresh"></i> Updated {{ repo.pushed_at | date: "%Y-%m-%d" }}</span>
+      </p>
+    </article>
+  {% endfor %}
+  </div>
+{% else %}
+  <p>No public repositories found or GitHub metadata not available.</p>
+{% endif %}
+
+<hr/>
+
+<p style="font-size: 0.9em; color: #666;">Data via <code>site.github.public_repositories</code> (jekyll-github-metadata).</p>
+
