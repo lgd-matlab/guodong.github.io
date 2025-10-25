@@ -9,8 +9,8 @@ author_profile: true
 
 <h2>GitHub Projects</h2>
 
+{% if site.github and site.github.public_repositories %}
 {% assign repos = site.github.public_repositories %}
-
 {% if repos and repos.size > 0 %}
   <div class="repo-list">
   {% for repo in repos %}
@@ -32,6 +32,9 @@ author_profile: true
   </div>
 {% else %}
   <p>No public repositories found or GitHub metadata not available. You can browse my projects on GitHub: <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">@{{ site.author.github }}</a>.</p>
+{% endif %}
+{% else %}
+<p>GitHub metadata is not available on this build. You can browse my projects on GitHub: <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">@{{ site.author.github }}</a>.</p>
 {% endif %}
 
 <hr/>
