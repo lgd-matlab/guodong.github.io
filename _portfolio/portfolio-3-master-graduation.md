@@ -1,6 +1,6 @@
 ---
 title: "Master's Dissertation Defense Success"
-excerpt: "Successfully defended my Master's dissertation in Materials Science with supervisors Dr. Liu and Dr. Hu<br/><img src='{{ "/images/master-defense-group.jpg" | relative_url }}'>"
+excerpt: "Successfully defended my Master's dissertation in Materials Science with supervisors Dr. Liu and Dr. Hu<br/><img src='/guodong.github.io/images/master-defense-group.jpg'>"
 collection: portfolio
 date: 2025-06-01
 ---
