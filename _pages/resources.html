@@ -9,8 +9,7 @@ author_profile: true
 
 <h2>GitHub Projects</h2>
 
-{% assign repos = site.github.public_repositories | where_exp: "r", "r.owner.login == site.author.github" %}
-{% assign repos = repos | sort: "stargazers_count" | reverse %}
+{% assign repos = site.github.public_repositories %}
 
 {% if repos and repos.size > 0 %}
   <div class="repo-list">
@@ -32,7 +31,7 @@ author_profile: true
   {% endfor %}
   </div>
 {% else %}
-  <p>No public repositories found or GitHub metadata not available.</p>
+  <p>No public repositories found or GitHub metadata not available. You can browse my projects on GitHub: <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">@{{ site.author.github }}</a>.</p>
 {% endif %}
 
 <hr/>
