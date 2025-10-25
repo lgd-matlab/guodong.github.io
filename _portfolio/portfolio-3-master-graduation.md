@@ -1,8 +1,8 @@
 ---
 title: "Master's Dissertation Defense Success"
-excerpt: "Successfully defended my Master's dissertation in Materials Science with supervisors Dr. Liu and Dr. Hu<br/><img src='/images/master-defense-group.jpg'>"
+excerpt: "Successfully defended my Master's dissertation in Materials Science with supervisors Dr. Liu and Dr. Hu<br/><img src='{{ "/images/master-defense-group.jpg" | relative_url }}'>"
 collection: portfolio
-date: 2025-10-25
+date: 2025-06-01
 ---
 
 ## Master's Dissertation Celebration
@@ -14,14 +14,14 @@ I am thrilled to share that I have successfully passed my Master's dissertation 
 After the defense, I had the honor of celebrating this achievement with my esteemed supervisors, **Dr. Liu** and **Dr. Hu**, along with fellow colleagues and lab members. Their guidance, support, and mentorship throughout my master's program have been invaluable in shaping my research capabilities and academic growth.
 
 <figure>
-  <img src="/images/master-defense-group.jpg" alt="Group photo after master dissertation defense" style="width:100%">
+  <img src="{{ "/images/master-defense-group.jpg" | relative_url }}" alt="Group photo after master dissertation defense" style="width:100%">
   <figcaption>Celebration photo with Dr. Liu, Dr. Hu, and colleagues after successfully defending my Master's dissertation</figcaption>
 </figure>
 
 The journey has been challenging yet rewarding, involving extensive research, experimentation, and collaboration. I'm grateful for the opportunity to have worked under such distinguished mentors and look forward to applying the knowledge and skills gained during my master's program to future research endeavors.
 
 <figure>
-  <img src="/images/master-defense-group-2.jpg" alt="Team photo after defense" style="width:60%">
+  <img src="{{ "/images/master-defense-group-2.jpg" | relative_url }}" alt="Team photo after defense" style="width:60%">
   <figcaption>Another memorable moment from the celebration</figcaption>
 </figure>
 
