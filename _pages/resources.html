@@ -40,3 +40,37 @@ author_profile: true
 <hr/>
 
 <p style="font-size: 0.9em; color: #666;">Data via <code>site.github.public_repositories</code> (jekyll-github-metadata).</p>
+
+<script>
+  (function(){
+    const container = document.querySelector('.repo-list');
+    if (!container || container.querySelector('article')) return;
+    const user = '{{ site.author.github | escape }}';
+    if (!user) return;
+    fetch(`https://api.github.com/users/${user}/repos?per_page=100&sort=updated`)
+      .then(r => r.ok ? r.json() : [])
+      .then(repos => {
+        if (!Array.isArray(repos)) return;
+        repos
+          .filter(r => !r.fork)
+          .sort((a,b) => (b.stargazers_count||0) - (a.stargazers_count||0))
+          .forEach(repo => {
+            const art = document.createElement('article');
+            art.className = 'archive__item';
+            art.innerHTML = `
+              <h3 class="archive__item-title">
+                <a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
+              </h3>
+              ${repo.description ? `<p class="archive__item-excerpt">${repo.description}</p>` : ''}
+              <p class="page__meta">
+                ${repo.language ? `<span><i class=\"fa fa-code\"></i> ${repo.language}</span>` : ''}
+                <span style="margin-left:10px;"><i class="fa fa-star"></i> ${repo.stargazers_count||0}</span>
+                <span style="margin-left:10px;"><i class="fa fa-code-fork"></i> ${repo.forks_count||0}</span>
+                <span style="margin-left:10px;"><i class="fa fa-refresh"></i> Updated ${new Date(repo.pushed_at).toISOString().slice(0,10)}</span>
+              </p>`;
+            container.appendChild(art);
+          });
+      })
+      .catch(()=>{});
+  })();
+  </script>
