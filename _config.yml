@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # Currently available options are "default", "air"
-title                    : "Guodong Lu / Materials Science Researcher"
+title                    : "Guodong Lu"
 title_separator          : "-"
 name                     : &name "Guodong Lu"
 description              : &description "Guodong Lu's academic portfolio - Materials Science and Computational Research"   # Update this with a general description of your site, this is the default if not overridden by a page

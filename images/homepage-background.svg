@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <!-- Crystal structures -->
+  <g stroke="#000" stroke-width="2" fill="none">
+    <!-- Left cube -->
+    <path d="M50,150 L50,250 L150,250 L150,150 Z"/>
+    <path d="M50,150 L100,100 L200,100 L150,150 Z"/>
+    <path d="M150,150 L200,100 L200,200 L150,250 Z"/>
+    <path d="M50,175 L150,175 M50,200 L150,200 M50,225 L150,225"/>
+    <path d="M75,150 L75,250 M100,150 L100,250 M125,150 L125,250"/>
+    
+    <!-- Large crystal left -->
+    <path d="M120,280 L180,180 L240,280 L180,380 Z"/>
+    <path d="M120,280 L180,250 L240,280 M180,180 L180,380"/>
+    
+    <!-- Pentagon crystal -->
+    <path d="M80,420 L120,380 L180,380 L220,420 L150,480 Z"/>
+    <path d="M150,380 L150,480 M120,380 L150,450 M180,380 L150,450 M80,420 L150,450 M220,420 L150,450"/>
+    
+    <!-- Atom/molecule icon -->
+    <circle cx="420" cy="150" r="30"/>
+    <line x1="390" y1="130" x2="360" y2="110"/>
+    <line x1="390" y1="170" x2="360" y2="190"/>
+    <line x1="450" y1="130" x2="480" y2="110"/>
+    <line x1="450" y1="170" x2="480" y2="190"/>
+    <line x1="420" y1="120" x2="420" y2="80"/>
+    <line x1="420" y1="180" x2="420" y2="220"/>
+    <circle cx="360" cy="110" r="8"/>
+    <circle cx="360" cy="190" r="8"/>
+    <circle cx="480" cy="110" r="8"/>
+    <circle cx="480" cy="190" r="8"/>
+    <circle cx="420" cy="80" r="8"/>
+    <circle cx="420" cy="220" r="8"/>
+    
+    <!-- Microscope -->
+    <g transform="translate(600, 280)">
+      <rect x="20" y="180" width="60" height="15" rx="3"/>
+      <rect x="45" y="130" width="10" height="50"/>
+      <circle cx="50" cy="120" r="15"/>
+      <path d="M60,130 L90,100 L100,110 L70,140 Z"/>
+      <circle cx="95" cy="95" r="12"/>
+      <path d="M35,130 L10,160"/>
+      <ellipse cx="10" cy="170" rx="8" ry="15"/>
+    </g>
+    
+    <!-- Beaker -->
+    <g transform="translate(450, 400)">
+      <path d="M30,20 L30,60 L20,80 L20,110 L70,110 L70,80 L60,60 L60,20 Z"/>
+      <line x1="30" y1="20" x2="60" y2="20"/>
+      <path d="M25,90 Q45,85 65,90" stroke-dasharray="3,3"/>
+    </g>
+    
+    <!-- Right crystal structures -->
+    <g transform="translate(850, 100)">
+      <path d="M50,50 L80,20 L110,50 L80,80 Z"/>
+      <path d="M50,50 L80,50 L110,50 M80,20 L80,80"/>
+    </g>
+    
+    <g transform="translate(900, 200)">
+      <path d="M30,100 L60,50 L90,100 L60,150 Z"/>
+      <path d="M30,100 L60,80 L90,100 M60,50 L60,150"/>
+    </g>
+    
+    <g transform="translate(950, 350)">
+      <path d="M20,50 L50,20 L80,50 L50,80 Z"/>
+      <line x1="20" y1="50" x2="80" y2="50"/>
+      <line x1="50" y1="20" x2="50" y2="80"/>
+    </g>
+    
+    <!-- Snowflake/crystal pattern -->
+    <g transform="translate(800, 500)">
+      <line x1="50" y1="20" x2="50" y2="80"/>
+      <line x1="20" y1="50" x2="80" y2="50"/>
+      <line x1="30" y1="30" x2="70" y2="70"/>
+      <line x1="70" y1="30" x2="30" y2="70"/>
+      <line x1="50" y1="20" x2="40" y2="35"/>
+      <line x1="50" y1="20" x2="60" y2="35"/>
+      <line x1="50" y1="80" x2="40" y2="65"/>
+      <line x1="50" y1="80" x2="60" y2="65"/>
+      <line x1="20" y1="50" x2="35" y2="40"/>
+      <line x1="20" y1="50" x2="35" y2="60"/>
+      <line x1="80" y1="50" x2="65" y2="40"/>
+      <line x1="80" y1="50" x2="65" y2="60"/>
+    </g>
+    
+    <!-- Arrow pointing down -->
+    <g transform="translate(850, 50)">
+      <line x1="30" y1="10" x2="30" y2="60"/>
+      <path d="M15,45 L30,60 L45,45"/>
+    </g>
+    
+    <!-- Asterisk symbol -->
+    <g transform="translate(700, 100)">
+      <line x1="30" y1="15" x2="30" y2="45"/>
+      <line x1="15" y1="30" x2="45" y2="30"/>
+      <line x1="20" y1="20" x2="40" y2="40"/>
+      <line x1="40" y1="20" x2="20" y2="40"/>
+    </g>
+  </g>
+</svg>
