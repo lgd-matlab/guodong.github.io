@@ -31,10 +31,10 @@ author_profile: true
   {% endfor %}
   </div>
 {% else %}
-  <p>No public repositories found or GitHub metadata not available. You can browse my projects on GitHub: <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">@{{ site.author.github }}</a>.</p>
+  <p id="gh-meta-msg">No public repositories found or GitHub metadata not available. You can browse my projects on GitHub: <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">@{{ site.author.github }}</a>.</p>
 {% endif %}
 {% else %}
-<p>GitHub metadata is not available on this build. You can browse my projects on GitHub: <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">@{{ site.author.github }}</a>.</p>
+<p id="gh-meta-msg">GitHub metadata is not available on this build. You can browse my projects on GitHub: <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">@{{ site.author.github }}</a>.</p>
 {% endif %}
 
 <hr/>
@@ -43,8 +43,18 @@ author_profile: true
 
 <script>
   (function(){
-    const container = document.querySelector('.repo-list');
-    if (!container || container.querySelector('article')) return;
+    let container = document.querySelector('.repo-list');
+    if (!container) {
+      const h2 = document.querySelector('h2');
+      container = document.createElement('div');
+      container.className = 'repo-list';
+      if (h2 && h2.parentNode) {
+        h2.insertAdjacentElement('afterend', container);
+      } else {
+        document.body.appendChild(container);
+      }
+    }
+    if (container.querySelector('article')) return;
     const user = '{{ site.author.github | escape }}';
     if (!user) return;
     fetch(`https://api.github.com/users/${user}/repos?per_page=100&sort=updated`)
@@ -70,6 +80,10 @@ author_profile: true
               </p>`;
             container.appendChild(art);
           });
+        if (container.children.length > 0) {
+          const msg = document.getElementById('gh-meta-msg');
+          if (msg) msg.remove();
+        }
       })
       .catch(()=>{});
   })();
