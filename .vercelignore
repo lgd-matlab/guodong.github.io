@@ -1,0 +1,53 @@
+# Jekyll files
+Gemfile
+Gemfile.lock
+_config.yml
+_config_docker.yml
+_posts/
+_publications/
+_talks/
+_teaching/
+_portfolio/
+_pages/
+layouts/
+_includes/
+_sass/
+_data/
+_markdown_generator/
+.markdown_generator/
+.markdown_generator/
+
+# Other Jekyll specific files
+README.md
+LICENSE.md
+CONTRIBUTING.md
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Cache and temporary files
+.sass-cache/
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/bundle/
+vendor/cache/
+
+# Documentation and scripts
+scripts/
+docs/
+*.md
+!README.md
+
+# Test files
+src/components/__tests__/
+*.test.*
+*.spec.*
+coverage/
+.nyc_output/
+
+# Development files
+.eslintrc.*
+.prettierrc.*
+jest.config.*
+tsconfig.json

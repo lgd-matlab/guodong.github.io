@@ -15,4 +15,15 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    outDir: "dist",
+    assetsDir: "assets",
+    sourcemap: mode === "development",
+    minify: mode === "production" ? "terser" : false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
 }));

@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "name": "acdmatic-opt",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "framework": "vite",
+  "functions": {},
+  "regions": ["iad1"]
+}
