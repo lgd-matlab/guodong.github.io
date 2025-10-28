@@ -26,7 +26,10 @@
   "dependencies": {
     "fitvids": "^2.1.1",
     "jquery": "^3.7.1",
-    "jquery-smooth-scroll": "^2.2.0"
+    "jquery-smooth-scroll": "^2.2.0",
+    "lucide-react": "^0.548.0",
+    "react-router-dom": "^7.9.4",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "onchange": "^7.1.0",
