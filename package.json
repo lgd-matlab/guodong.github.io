@@ -72,13 +72,16 @@
     "vite": "^4.5.14"
   },
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:dev": "vite build --mode development",
     "uglify": "uglifyjs node_modules/jquery/dist/jquery.min.js node_modules/fitvids/dist/fitvids.min.js node_modules/jquery-smooth-scroll/jquery.smooth-scroll.min.js assets/js/plugins/jquery.greedy-navigation.js assets/js/_main.js -c -m -o assets/js/main.min.js",
     "watch:js": "onchange \"assets/js/**/*.js\" -e \"assets/js/main.min.js\" -- npm run build:js",
     "build:js": "npm run uglify",
     "build:react": "vite build",
     "build:all": "npm run build:react && npm run build:js",
     "watch:react": "vite build --watch",
-    "dev": "npm run watch:react & npm run watch:js & bundle exec jekyll serve",
+    "dev:jekyll": "npm run watch:react & npm run watch:js & bundle exec jekyll serve",
     "serve": "bundle exec jekyll serve",
     "test:react": "jest",
     "test:watch": "jest --watch",
