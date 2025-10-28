@@ -1,0 +1,53 @@
+/* ==========================================================================
+   ACADEMIC WARM THEME - DARK MODE
+   Maintains warm academic aesthetic with darker tones
+   ========================================================================== */
+
+/* Color codes used for the dark theme */
+$dark-warm-bg               : #2b1f17;  /* hsl(25, 15%, 15%) - Dark background */
+$dark-warm-bg-light         : #3d2f25;  /* hsl(25, 20%, 18%) - Card background */
+$dark-warm-text             : #f5f1eb;  /* hsl(40, 25%, 95%) - Light text */
+$dark-warm-text-muted       : #b8a894;  /* hsl(40, 15%, 65%) - Muted text */
+$dark-warm-primary          : #d9c5b3;  /* hsl(40, 25%, 85%) - Primary light */
+$dark-warm-primary-dark     : #735336;  /* hsl(25, 45%, 20%) - Primary dark */
+$dark-warm-border           : #ffffff;  /* hsl(0, 0%, 100%) - Borders */
+$dark-warm-accent           : #cc8e52;  /* hsl(30, 60%, 45%) - Accent */
+$dark-warm-secondary        : #3d2f25;  /* hsl(25, 15%, 25%) - Secondary */
+
+/* Color codes used for the site */
+$danger-color               : #cc4e4a;  /* Adjusted for dark mode */
+$info-color                 : #2f7f93;
+$notice-color               : #7a8288;
+$success-color              : #62c462;
+$warning-color              : #f89406;
+
+/* Other basic settings for the template */
+$border-radius              : 4px;
+$box-shadow                 : none;  /* Reference site uses no shadows */
+$border-width               : 4px;   /* Thick borders like reference */
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 70px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+/* Academic Warm Dark theme for the site */
+.dark-theme {
+    --global-base-color                 : #{$dark-warm-primary};
+    --global-bg-color                   : #{$dark-warm-bg};
+    --global-footer-bg-color            : #{$dark-warm-bg-light};
+    --global-border-color               : #{$dark-warm-border};
+    --global-dark-border-color          : #cccccc;
+    --global-code-background-color      : #{$dark-warm-bg-light};
+    --global-code-text-color            : #{$dark-warm-text-muted};
+    --global-fig-caption-color          : #{$dark-warm-text-muted};
+    --global-link-color                 : #{$dark-warm-primary};
+    --global-link-color-hover           : #{$dark-warm-text};
+    --global-link-color-visited         : #{$dark-warm-text-muted};
+    --global-masthead-link-color        : #{$dark-warm-text};
+    --global-masthead-link-color-hover  : #{$dark-warm-primary};
+    --global-text-color                 : #{$dark-warm-text};
+    --global-text-color-light           : #{$dark-warm-text-muted};
+    --global-thead-color                : #{$dark-warm-bg-light};
+}

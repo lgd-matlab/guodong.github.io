@@ -1,3 +1,111 @@
+/* ==========================================================================
+   CUSTOM STYLES - Academic Warm Theme Enhancements
+   Matching reference site's bold, thick-border aesthetic
+   ========================================================================== */
+
+/* Global thick border styling */
+.page__content,
+.archive__item,
+.list__item article,
+.page__related article {
+  border: 4px solid var(--global-border-color) !important;
+  box-shadow: none !important;
+  padding: 2rem !important;
+}
+
+/* Sidebar thick border */
+.sidebar {
+  border-right: 4px solid var(--global-border-color) !important;
+
+  .author__avatar {
+    img {
+      border: 4px solid var(--global-border-color) !important;
+      border-radius: 50% !important;
+      max-width: 176px !important;
+      max-height: 176px !important;
+    }
+  }
+}
+
+/* Headings with thick bottom border */
+h1, h2, h3 {
+  border-bottom: 4px solid var(--global-border-color) !important;
+  padding-bottom: 1rem !important;
+  font-weight: 700 !important;
+}
+
+/* Remove heading borders for sidebar and specific contexts */
+.sidebar h1, .sidebar h2, .sidebar h3,
+.author__name, .author__bio {
+  border-bottom: none !important;
+}
+
+/* Links with underline */
+a {
+  text-decoration: underline;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--global-link-color-hover);
+  }
+}
+
+/* Remove underline from navigation and specific elements */
+.greedy-nav a,
+.author__urls a,
+.page__taxonomy-item,
+.pagination a,
+.btn {
+  text-decoration: none !important;
+}
+
+/* Buttons with thick borders */
+.btn,
+button,
+input[type="submit"],
+input[type="button"] {
+  border: 2px solid var(--global-border-color) !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+
+  &:hover {
+    border-color: var(--global-link-color-hover) !important;
+  }
+}
+
+/* Card-like elements */
+.archive__item-teaser,
+.page__hero,
+.notice {
+  border: 4px solid var(--global-border-color) !important;
+  box-shadow: none !important;
+}
+
+/* Tables */
+table {
+  border: 4px solid var(--global-border-color) !important;
+
+  th, td {
+    border: 2px solid var(--global-border-color) !important;
+  }
+}
+
+/* Masthead (navigation bar) */
+.masthead {
+  border-bottom: 4px solid var(--global-border-color) !important;
+}
+
+/* Footer */
+.page__footer {
+  border-top: 4px solid var(--global-border-color) !important;
+}
+
+/* Code blocks */
+pre, code {
+  border: 2px solid var(--global-border-color) !important;
+  box-shadow: none !important;
+}
+
 /* Custom styles for citation counts */
 .citation-count {
   margin-top: 8px;

@@ -1,0 +1,53 @@
+/* ==========================================================================
+   ACADEMIC WARM THEME - LIGHT MODE
+   Based on warm beige/tan academic aesthetic from reference site
+   ========================================================================== */
+
+/* Color codes used for the theme */
+$warm-beige                 : #e8dfd1;  /* hsl(40, 30%, 90%) - Main background */
+$warm-beige-light           : #f5f1eb;  /* hsl(40, 25%, 95%) - Card background */
+$warm-brown                 : #845835;  /* hsl(25, 45%, 35%) - Primary accent */
+$warm-brown-dark            : #5a3b23;  /* Darker brown for hover states */
+$warm-brown-darker          : #4a2f1c;  /* Even darker for active states */
+$warm-text                  : #1a1a1a;  /* hsl(0, 0%, 10%) - Main text */
+$warm-text-muted            : #666666;  /* hsl(0, 0%, 40%) - Muted text */
+$warm-border                : #262626;  /* hsl(0, 0%, 15%) - Borders */
+$warm-accent                : #d97733;  /* hsl(30, 60%, 50%) - Accent color */
+
+/* Color codes used for the site */
+$danger-color               : #ee5f5b;
+$info-color                 : #2f7f93;
+$notice-color               : #7a8288;
+$success-color              : #62c462;
+$warning-color              : #f89406;
+
+/* Other basic settings for the template */
+$border-radius              : 4px;
+$box-shadow                 : none;  /* Reference site uses no shadows */
+$border-width               : 4px;   /* Thick borders like reference */
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 70px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+/* Academic Warm Light theme for the site */
+:root {
+    --global-base-color                 : #{$warm-brown};
+    --global-bg-color                   : #{$warm-beige};
+    --global-footer-bg-color            : #{$warm-beige-light};
+    --global-border-color               : #{$warm-border};
+    --global-dark-border-color          : #3d3d3d;
+    --global-code-background-color      : #{$warm-beige-light};
+    --global-code-text-color            : #{$warm-brown-darker};
+    --global-fig-caption-color          : #{$warm-text-muted};
+    --global-link-color                 : #{$warm-brown};
+    --global-link-color-hover           : #{$warm-brown-dark};
+    --global-link-color-visited         : #{$warm-brown-darker};
+    --global-masthead-link-color        : #{$warm-text};
+    --global-masthead-link-color-hover  : #{$warm-brown};
+    --global-text-color                 : #{$warm-text};
+    --global-text-color-light           : #{$warm-text-muted};
+    --global-thead-color                : #{$warm-beige-light};
+}
