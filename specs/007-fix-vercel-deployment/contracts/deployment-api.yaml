@@ -1,0 +1,307 @@
+# Deployment API Contract: Vercel Configuration
+# Specification for deployment configuration and routing
+
+openapi: 3.0.3
+info:
+  title: Vercel Deployment Configuration API
+  description: Configuration contract for React/Vite deployment on Vercel
+  version: 1.0.0
+  contact:
+    name: Vercel Configuration
+    url: https://vercel.com/docs
+
+# This is a configuration contract, not a runtime API
+# The "endpoints" below represent configuration contracts
+
+paths:
+  # Configuration Contracts
+  /vercel/config:
+    get:
+      summary: Vercel Platform Configuration
+      description: Configuration contract for Vercel deployment platform
+      responses:
+        '200':
+          description: Vercel configuration schema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VercelConfig'
+              example:
+                version: "2"
+                framework: "vite"
+                buildCommand: "npm run build"
+                outputDirectory: "dist"
+                installCommand: "npm install"
+                rewrites:
+                  - source: "/(.*)"
+                    destination: "/index.html"
+
+  /vercel/exclusions:
+    get:
+      summary: Deployment File Exclusions
+      description: Contract for files excluded from Vercel deployment
+      responses:
+        '200':
+          description: File exclusion patterns
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: |
+                  # Jekyll Configuration Files
+                  _config.yml
+                  _config_*.yml
+                  Gemfile
+                  Gemfile.lock
+
+                  # Jekyll Directories
+                  _layouts/
+                  _posts/
+                  _includes/
+                  _data/
+                  _sass/
+                  _collections/
+
+                  # Jekyll Build Artifacts
+                  _site/
+                  .jekyll-cache/
+                  .jekyll-metadata
+                  .sass-cache/
+
+                  # Development Files
+                  .git/
+                  node_modules/
+                  *.log
+
+  /vercel/build/process:
+    get:
+      summary: Build Process Contract
+      description: Contract for Vercel build process steps
+      responses:
+        '200':
+          description: Build process workflow
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuildProcess'
+              example:
+                steps:
+                  - name: "Dependency Installation"
+                    command: "npm install"
+                    timeout: 300
+                  - name: "Application Build"
+                    command: "npm run build"
+                    timeout: 600
+                  - name: "Asset Optimization"
+                    command: "vercel-static-build"
+                    timeout: 120
+
+  /vercel/routing/spa:
+    get:
+      summary: Single Page Application Routing
+      description: Contract for SPA routing configuration
+      responses:
+        '200':
+          description: SPA routing rules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RouteRule'
+              example:
+                - source: "/(.*)"
+                  destination: "/index.html"
+                  has:
+                    - type: "header"
+                      key: "x-vercel-no-cache"
+                      value: "1"
+
+components:
+  schemas:
+    VercelConfig:
+      type: object
+      required:
+        - version
+        - framework
+        - buildCommand
+        - outputDirectory
+        - installCommand
+      properties:
+        version:
+          type: string
+          description: Vercel configuration schema version
+          enum: ["2"]
+          example: "2"
+        framework:
+          type: string
+          description: Framework identifier for build process
+          enum: ["vite", "react", "nextjs", "nuxt", null]
+          example: "vite"
+        buildCommand:
+          type: string
+          description: Command to build the application
+          example: "npm run build"
+        outputDirectory:
+          type: string
+          description: Directory containing build artifacts
+          example: "dist"
+        installCommand:
+          type: string
+          description: Command to install dependencies
+          example: "npm install"
+        devCommand:
+          type: string
+          description: Command for local development
+          example: "npm run dev"
+        rewrites:
+          type: array
+          description: URL rewrite rules for SPA routing
+          items:
+            $ref: '#/components/schemas/RouteRule'
+        headers:
+          type: array
+          description: HTTP headers for specific paths
+          items:
+            $ref: '#/components/schemas/HeaderRule'
+        functions:
+          type: object
+          description: Serverless function configuration
+          additionalProperties: true
+        build:
+          type: object
+          description: Build-time environment configuration
+          properties:
+            env:
+              type: object
+              additionalProperties:
+                type: string
+
+    RouteRule:
+      type: object
+      required:
+        - source
+        - destination
+      properties:
+        source:
+          type: string
+          description: URL pattern to match
+          example: "/(.*)"
+        destination:
+          type: string
+          description: Target URL for rewrite
+          example: "/index.html"
+        has:
+          type: array
+          description: Conditions for rule application
+          items:
+            $ref: '#/components/schemas/RouteCondition'
+        missing:
+          type: array
+          description: Negative conditions for rule application
+          items:
+            $ref: '#/components/schemas/RouteCondition'
+
+    RouteCondition:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum: ["header", "cookie", "query", "host"]
+          example: "header"
+        key:
+          type: string
+          description: Condition key name
+          example: "x-vercel-no-cache"
+        value:
+          type: string
+          description: Condition value to match
+          example: "1"
+
+    HeaderRule:
+      type: object
+      required:
+        - source
+        - headers
+      properties:
+        source:
+          type: string
+          description: Path pattern for header application
+          example: "/assets/(.*)"
+        headers:
+          type: array
+          description: HTTP headers to apply
+          items:
+            type: object
+            required:
+              - key
+              - value
+            properties:
+              key:
+                type: string
+                example: "Cache-Control"
+              value:
+                type: string
+                example: "public, max-age=31536000, immutable"
+
+    BuildProcess:
+      type: object
+      required:
+        - steps
+      properties:
+        steps:
+          type: array
+          description: Build process steps
+          items:
+            type: object
+            required:
+              - name
+              - command
+              - timeout
+            properties:
+              name:
+                type: string
+                description: Step name
+                example: "Dependency Installation"
+              command:
+                type: string
+                description: Command to execute
+                example: "npm install"
+              timeout:
+                type: integer
+                description: Timeout in seconds
+                example: 300
+              environment:
+                type: object
+                description: Environment variables for step
+                additionalProperties:
+                  type: string
+
+    ExclusionPattern:
+      type: object
+      required:
+        - pattern
+        - reason
+      properties:
+        pattern:
+          type: string
+          description: Glob pattern for file exclusion
+          example: "_config.yml"
+        reason:
+          type: string
+          description: Why this pattern is excluded
+          example: "Jekyll configuration file that triggers wrong framework detection"
+        category:
+          type: string
+          enum: ["jekyll-config", "jekyll-directories", "jekyll-cache", "development", "build-artifacts"]
+          example: "jekyll-config"
+
+tags:
+  - name: Configuration
+    description: Vercel platform configuration contracts
+  - name: Build Process
+    description: Build and deployment process specifications
+  - name: Routing
+    description: URL routing and rewrite rules
