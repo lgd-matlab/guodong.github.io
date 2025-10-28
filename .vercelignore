@@ -4,6 +4,21 @@ _config_*.yml
 Gemfile
 Gemfile.lock
 
+# Additional Jekyll detection patterns
+Rakefile
+*.rb
+_rakefile
+_ruby
+
+# Force Ruby files to be ignored
+*.gemspec
+Gemfile.*
+*.gem
+
+# Jekyll metadata files
+.jekyll-metadata
+.jekyll-cache
+
 # Jekyll Directories
 _layouts/
 _posts/

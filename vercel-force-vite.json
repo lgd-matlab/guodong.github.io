@@ -1,6 +1,11 @@
 {
   "version": 2,
   "name": "acdmatic-opt",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "framework": null,
   "builds": [
     {
       "src": "package.json",
@@ -10,12 +15,6 @@
       }
     }
   ],
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "outputDirectory": "dist",
-  "devCommand": "npm run dev",
-  "framework": "vite",
-  "functions": {},
   "regions": ["iad1"],
   "routes": [
     {
@@ -34,20 +33,8 @@
       ]
     }
   ],
-  "frameworkDetection": {
-    "rules": [
-      {
-        "src": "package.json",
-        "framework": "vite"
-      }
-    ]
-  },
-  "build": {
-    "env": {
-      "NODE_VERSION": "18",
-      "VERCEL_FRAMEWORK": "vite",
-      "VERCEL_IGNORE_RUBY": "true"
-    },
-    "cwd": "."
-  }
+  "functions": {},
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }
