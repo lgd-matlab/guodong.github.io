@@ -1,0 +1,66 @@
+/* Shared CSS variables for React components */
+/* These variables will integrate with the existing Jekyll academic_warm theme */
+
+:root {
+  /* Colors that match the academic_warm theme */
+  --react-primary-color: #8b4513;
+  --react-secondary-color: #d2691e;
+  --react-background-color: #faf8f5;
+  --react-text-color: #3d2714;
+  --react-border-color: #ddd4c7;
+  --react-accent-color: #a0522d;
+
+  /* Badge specific colors */
+  --react-badge-bg: #f0e6d8;
+  --react-badge-text: #8b4513;
+  --react-badge-bg-hover: #e6dcc8;
+  --react-badge-bg-loading: #fff8dc;
+  --react-badge-text-loading: #a0522d;
+  --react-badge-bg-error: #ffebee;
+  --react-badge-text-error: #c62828;
+
+  /* Spacing scale (matching existing theme) */
+  --react-spacing-xs: 0.25rem;
+  --react-spacing-sm: 0.5rem;
+  --react-spacing-md: 1rem;
+  --react-spacing-lg: 1.5rem;
+  --react-spacing-xl: 2rem;
+
+  /* Typography */
+  --react-font-family-heading: 'Georgia', serif;
+  --react-font-family-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --react-font-family-code: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+
+  /* Border radius */
+  --react-border-radius-sm: 0.25rem;
+  --react-border-radius-md: 0.5rem;
+  --react-border-radius-lg: 1rem;
+
+  /* Shadows */
+  --react-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --react-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --react-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --react-transition-fast: 0.15s ease;
+  --react-transition-normal: 0.2s ease;
+  --react-transition-slow: 0.3s ease;
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --react-primary-color: #d4a574;
+  --react-secondary-color: #e6c9a8;
+  --react-background-color: #2d2d2d;
+  --react-text-color: #f0e6d8;
+  --react-border-color: #4a4a4a;
+  --react-accent-color: #f4e4d4;
+
+  --react-badge-bg: #4a4a4a;
+  --react-badge-text: #d4a574;
+  --react-badge-bg-hover: #5a5a5a;
+  --react-badge-bg-loading: #555;
+  --react-badge-text-loading: #e6c9a8;
+  --react-badge-bg-error: #4a1f1f;
+  --react-badge-text-error: #ff6b6b;
+}

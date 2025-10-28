@@ -156,6 +156,17 @@ analytics:
   google:
     tracking_id          :
 
+# Theme Toggle Configuration
+theme_toggle:
+  default_theme: "system" # "light", "dark", or "system"
+  storage_key: "academic-website-theme"
+  enable_system_detection: true
+  enable_persistence: true
+  transition_duration: 300
+  enable_plotly_integration: false
+  show_label: false
+  show_indicator: false
+
 
 # Reading Files
 include:

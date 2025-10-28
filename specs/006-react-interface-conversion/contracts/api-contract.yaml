@@ -1,0 +1,394 @@
+openapi: 3.0.3
+info:
+  title: Academic Website API Contract
+  description: API contracts for React components in academic website
+  version: 1.0.0
+  contact:
+    name: Guodong Lu Academic Website
+    email: contact@example.com
+
+servers:
+  - url: https://api.openalex.org
+    description: OpenAlex API for citation data
+  - url: https://lgd-matlab.github.io/guodong.github.io
+    description: Local Jekyll site for content data
+
+paths:
+  /api/citations:
+    get:
+      summary: Get citation data for publications
+      description: Fetches citation counts and metadata from OpenAlex API
+      operationId: getCitationData
+      tags:
+        - Citations
+      parameters:
+        - name: doi
+          in: query
+          description: Digital Object Identifier for publication
+          required: true
+          schema:
+            type: string
+            pattern: '^10\\.[0-9]{4,}\\/.+$'
+        - name: format
+          in: query
+          description: Desired citation format
+          required: false
+          schema:
+            type: string
+            enum: [apa, mla, chicago, bibtex, ris, endnote]
+            default: apa
+      responses:
+        '200':
+          description: Successful citation data retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CitationData'
+        '400':
+          description: Invalid DOI format or parameters
+        '404':
+          description: Publication not found
+        '429':
+          description: Rate limit exceeded
+
+  /api/publications:
+    get:
+      summary: Get publication list
+      description: Retrieves publication data from Jekyll site
+      operationId: getPublications
+      tags:
+        - Publications
+      parameters:
+        - name: category
+          in: query
+          description: Filter by publication category
+          required: false
+          schema:
+            type: string
+            enum: [manuscripts, books, conferences]
+        - name: year
+          in: query
+          description: Filter by publication year
+          required: false
+          schema:
+            type: string
+            pattern: '^\\d{4}$'
+        - name: search
+          in: query
+          description: Search in title and excerpt
+          required: false
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: Sort field and direction
+          required: false
+          schema:
+            type: string
+            enum: [date_desc, date_asc, title_asc, citation_desc]
+            default: date_desc
+      responses:
+        '200':
+          description: Successful publication retrieval
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Publication'
+        '400':
+          description: Invalid query parameters
+
+  /api/author/profile:
+    get:
+      summary: Get author profile data
+      description: Retrieves author information from Jekyll site
+      operationId: getAuthorProfile
+      tags:
+        - Author
+      responses:
+        '200':
+          description: Successful author profile retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+        '404':
+          description: Author profile not found
+
+components:
+  schemas:
+    CitationData:
+      type: object
+      required:
+        - id
+        - apa
+        - mla
+        - chicago
+        - citation_count
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the citation
+        apa:
+          type: string
+          description: APA format citation
+        mla:
+          type: string
+          description: MLA format citation
+        chicago:
+          type: string
+          description: Chicago format citation
+        bibtex:
+          type: string
+          description: BibTeX format citation
+        ris:
+          type: string
+          description: RIS format citation
+        citation_count:
+          type: integer
+          description: Number of citations
+          minimum: 0
+        publication_year:
+          type: integer
+          description: Year of publication
+        venue:
+          type: string
+          description: Publication venue
+        title:
+          type: string
+          description: Publication title
+
+    Publication:
+      type: object
+      required:
+        - id
+        - title
+        - venue
+        - date
+        - category
+        - excerpt
+        - url
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        title:
+          type: string
+          description: Publication title
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Author'
+          description: List of authors
+        venue:
+          type: string
+          description: Publication venue
+        date:
+          type: string
+          format: date
+          description: Publication date (YYYY-MM-DD)
+        category:
+          type: string
+          enum: [manuscripts, books, conferences]
+          description: Publication category
+        excerpt:
+          type: string
+          description: Publication excerpt
+        url:
+          type: string
+          format: uri
+          description: Publication URL
+        pdfUrl:
+          type: string
+          format: uri
+          description: PDF download URL
+        doi:
+          type: string
+          description: Digital Object Identifier
+        citationCount:
+          type: integer
+          minimum: 0
+          description: Citation count
+
+    Author:
+      type: object
+      required:
+        - name
+        - title
+        - affiliation
+        - avatar
+        - bio
+        - email
+        - website
+      properties:
+        name:
+          type: string
+          description: Full name
+        title:
+          type: string
+          description: Professional title
+        affiliation:
+          type: string
+          description: Institutional affiliation
+        avatar:
+          type: string
+          format: uri
+          description: Profile image URL
+        bio:
+          type: string
+          description: Professional biography
+        email:
+          type: string
+          format: email
+          description: Contact email
+        website:
+          type: string
+          format: uri
+          description: Personal website
+        socialLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/SocialLink'
+          description: Social media links
+        interests:
+          type: array
+          items:
+            type: string
+          description: Research interests
+        currentStatus:
+          type: string
+          description: Current professional status
+
+    SocialLink:
+      type: object
+      required:
+        - platform
+        - url
+        - icon
+        - isVisible
+      properties:
+        platform:
+          type: string
+          description: Social media platform name
+        url:
+          type: string
+          format: uri
+          description: Profile URL
+        icon:
+          type: string
+          description: Icon identifier
+        isVisible:
+          type: boolean
+          description: Whether link should be visible
+
+    PublicationFilters:
+      type: object
+      properties:
+        category:
+          type: array
+          items:
+            type: string
+            enum: [manuscripts, books, conferences]
+        year:
+          type: array
+          items:
+            type: string
+            pattern: '^\\d{4}$'
+        author:
+          type: array
+          items:
+            type: string
+        venue:
+          type: array
+          items:
+            type: string
+
+    Theme:
+      type: object
+      required:
+        - id
+        - name
+        - colors
+        - fonts
+        - spacing
+      properties:
+        id:
+          type: string
+          description: Theme identifier
+        name:
+          type: string
+          description: Theme display name
+        colors:
+          type: object
+          properties:
+            primary:
+              type: string
+              format: color
+            secondary:
+              type: string
+              format: color
+            background:
+              type: string
+              format: color
+            text:
+              type: string
+              format: color
+            border:
+              type: string
+              format: color
+          description: Color palette
+        fonts:
+          type: object
+          properties:
+            heading:
+              type: string
+            body:
+              type: string
+            code:
+              type: string
+          description: Font family definitions
+        spacing:
+          type: object
+          properties:
+            unit:
+              type: string
+              enum: [px, rem, em]
+            scale:
+              type: object
+              additionalProperties:
+                type: number
+          description: Spacing scale definition
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error type identifier
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error details
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for external service authentication
+
+tags:
+  - name: Citations
+    description: Citation management functionality
+  - name: Publications
+    description: Publication data and filtering
+  - name: Author
+    description: Author profile information
+  - name: Theme
+    description: Theme and styling operations

@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+assets/js/bundles/
+_site/
+.sass-cache/
+.jekyll-cache/
+
+# Jekyll files
+_config.yml
+_config_docker.yml
+
+# Vendor files
+vendor/
+.bundle/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Coverage reports
+coverage/
+
+# Git
+.git/
+.gitignore
+
+# Minified files
+*.min.js
+*.min.css
+
+# Third-party libraries
+assets/js/plugins/
+node_modules/
+
+# Jekyll data files
+_data/
+collections/
+
+# Specific files that shouldn't be formatted
+README.md
+CHANGELOG.md
+LICENSE

@@ -1,0 +1,271 @@
+<!-- Theme Toggle Component Integration -->
+<!-- This include provides the Jekyll integration for the React ThemeToggle component -->
+
+<!-- Container for ThemeToggle React component -->
+<div id="theme-toggle-container" data-theme-toggle
+     data-config="{{ site.theme_toggle_config | default: '{}' }}"
+     class="{{ include.class | default: '' }}">
+
+  <!-- Fallback content for when JavaScript is disabled or React fails to load -->
+  <noscript>
+    <style>
+      .theme-toggle-fallback {
+        padding: 0.5rem 0.75rem;
+        border: 2px solid var(--border-color, #e1e5e9);
+        border-radius: 2rem;
+        background: var(--background-color, #ffffff);
+        color: var(--text-color, #333333);
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: all 300ms ease-in-out;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+      }
+
+      .theme-toggle-fallback:hover {
+        background: var(--background-color-hover, #f8f9fa);
+        border-color: var(--accent-color, #0066cc);
+      }
+
+      [data-theme="dark"] .theme-toggle-fallback {
+        background: var(--background-color-dark, #2d3748);
+        border-color: var(--border-color-dark, #4a5568);
+        color: var(--text-color-dark, #e2e8f0);
+      }
+
+      [data-theme="dark"] .theme-toggle-fallback:hover {
+        background: var(--background-color-dark-hover, #1a202c);
+        border-color: var(--accent-color-dark, #4299e1);
+      }
+    </style>
+
+    <div class="theme-toggle-fallback" title="Theme toggle (JavaScript required for full functionality)">
+      <span aria-hidden="true">🌓</span>
+      <span>Theme</span>
+    </div>
+  </noscript>
+
+  <!-- Loading indicator (shown briefly while React loads) -->
+  <div class="theme-toggle-loading" style="display: none;">
+    <span aria-hidden="true">🌓</span>
+    <span>Loading...</span>
+  </div>
+
+  <!-- React component will be mounted here -->
+  <!-- The actual ThemeToggle React component will replace this content -->
+</div>
+
+<!-- Integration script for progressive enhancement -->
+<script>
+  (function() {
+    'use strict';
+
+    // Configuration for the theme toggle
+    var defaultConfig = {
+      defaultTheme: '{{ site.theme_toggle.default_theme | default: "system" }}',
+      storageKey: '{{ site.theme_toggle.storage_key | default: "academic-website-theme" }}',
+      enableSystemDetection: {{ site.theme_toggle.enable_system_detection | default: true }},
+      enablePersistence: {{ site.theme_toggle.enable_persistence | default: true }},
+      transitionDuration: {{ site.theme_toggle.transition_duration | default: 300 }},
+      enablePlotlyIntegration: {{ site.theme_toggle.enable_plotly_integration | default: false }},
+      showLabel: {{ site.theme_toggle.show_label | default: false }},
+      showIndicator: {{ site.theme_toggle.show_indicator | default: false }}
+    };
+
+    // Parse configuration from data attributes and merge with defaults
+    function parseThemeToggleConfig(element) {
+      var config = JSON.parse(JSON.stringify(defaultConfig)); // Deep copy
+
+      try {
+        var dataConfig = element.getAttribute('data-config');
+        if (dataConfig) {
+          var parsedConfig = JSON.parse(dataConfig);
+          Object.keys(parsedConfig).forEach(function(key) {
+            if (parsedConfig.hasOwnProperty(key)) {
+              config[key] = parsedConfig[key];
+            }
+          });
+        }
+      } catch (error) {
+        console.warn('Failed to parse theme-toggle config:', error);
+      }
+
+      // Parse individual data attributes
+      var dataAttributes = {
+        'defaultTheme': 'defaultTheme',
+        'storageKey': 'storageKey',
+        'showLabel': 'showLabel',
+        'showIndicator': 'showIndicator',
+        'enablePlotlyIntegration': 'enablePlotlyIntegration',
+        'transitionDuration': 'transitionDuration'
+      };
+
+      Object.keys(dataAttributes).forEach(function(dataAttr) {
+        var value = element.getAttribute('data-' + dataAttr.toLowerCase());
+        if (value !== null) {
+          var configKey = dataAttributes[dataAttr];
+          if (value === 'true') config[configKey] = true;
+          else if (value === 'false') config[configKey] = false;
+          else if (!isNaN(value) && value !== '') config[configKey] = Number(value);
+          else config[configKey] = value;
+        }
+      });
+
+      return config;
+    }
+
+    // Initialize theme toggle functionality
+    function initializeThemeToggle() {
+      var container = document.getElementById('theme-toggle-container');
+      if (!container) return;
+
+      var config = parseThemeToggleConfig(container);
+
+      // Simple theme toggle functionality for when React fails to load
+      function createFallbackToggle() {
+        var currentTheme = localStorage.getItem(config.storageKey) ||
+                          config.defaultTheme || 'system';
+
+        function updateTheme(newTheme) {
+          currentTheme = newTheme;
+          document.documentElement.setAttribute('data-theme', currentTheme);
+          localStorage.setItem(config.storageKey, currentTheme);
+
+          // Update button icon
+          var icon = container.querySelector('[data-theme-icon]');
+          if (icon) {
+            switch (currentTheme) {
+              case 'light':
+                icon.textContent = '☀️';
+                break;
+              case 'dark':
+                icon.textContent = '🌙';
+                break;
+              default:
+                icon.textContent = '🌓';
+            }
+          }
+
+          // Trigger theme change event
+          var event = new CustomEvent('themechange', {
+            detail: { theme: currentTheme, source: 'fallback' }
+          });
+          document.dispatchEvent(event);
+        }
+
+        function cycleTheme() {
+          switch (currentTheme) {
+            case 'light':
+              updateTheme('dark');
+              break;
+            case 'dark':
+              updateTheme('system');
+              break;
+            default:
+              updateTheme('light');
+          }
+        }
+
+        // Create fallback button
+        var button = document.createElement('button');
+        button.className = 'theme-toggle-fallback';
+        button.setAttribute('type', 'button');
+        button.setAttribute('title', 'Toggle theme (click to cycle through themes)');
+        button.onclick = cycleTheme;
+
+        var icon = document.createElement('span');
+        icon.setAttribute('aria-hidden', 'true');
+        icon.setAttribute('data-theme-icon', 'true');
+        icon.textContent = currentTheme === 'light' ? '☀️' :
+                         currentTheme === 'dark' ? '🌙' : '🌓';
+
+        var label = document.createElement('span');
+        label.textContent = config.showLabel ?
+                          (currentTheme === 'system' ? 'Auto' :
+                           currentTheme.charAt(0).toUpperCase() + currentTheme.slice(1)) :
+                          'Theme';
+
+        button.appendChild(icon);
+        if (config.showLabel) {
+          button.appendChild(label);
+        }
+
+        // Replace container content with fallback
+        container.innerHTML = '';
+        container.appendChild(button);
+
+        // Set initial theme
+        updateTheme(currentTheme);
+      }
+
+      // Try to load React component, fallback to simple implementation after timeout
+      var reactLoaded = false;
+      var fallbackTimeout = setTimeout(function() {
+        if (!reactLoaded) {
+          console.warn('React ThemeToggle component failed to load, using fallback');
+          createFallbackToggle();
+        }
+      }, 3000); // 3 second timeout
+
+      // Check if React component has been loaded
+      var checkReactLoaded = setInterval(function() {
+        if (container.hasAttribute('data-react-mounted')) {
+          reactLoaded = true;
+          clearTimeout(fallbackTimeout);
+          clearInterval(checkReactLoaded);
+        }
+      }, 100);
+
+      // Clear check after 10 seconds
+      setTimeout(function() {
+        clearInterval(checkReactLoaded);
+      }, 10000);
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeThemeToggle);
+    } else {
+      initializeThemeToggle();
+    }
+
+    // Also initialize after a short delay to handle dynamic content
+    setTimeout(initializeThemeToggle, 100);
+
+  })();
+</script>
+
+<!-- CSS for theme toggle integration -->
+<style>
+  #theme-toggle-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .theme-toggle-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    color: #666;
+    font-size: 0.875rem;
+  }
+
+  /* Integration with existing Jekyll themes */
+  .masthead #theme-toggle-container {
+    margin-left: 0.5rem;
+  }
+
+  .sidebar #theme-toggle-container {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .masthead #theme-toggle-container {
+      margin-left: 0.25rem;
+    }
+  }
+</style>
