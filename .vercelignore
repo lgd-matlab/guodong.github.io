@@ -1,23 +1,31 @@
-# Jekyll files
+# Jekyll Configuration Files
+_config.yml
+_config_*.yml
 Gemfile
 Gemfile.lock
-_config.yml
-_config_docker.yml
+
+# Jekyll Directories
+_layouts/
 _posts/
-_publications/
-_talks/
-_teaching/
-_portfolio/
-_pages/
-layouts/
 _includes/
-_sass/
 _data/
+_sass/
+_collections/
 _markdown_generator/
 .markdown_generator/
-.markdown_generator/
 
-# Other Jekyll specific files
+# Jekyll Build Artifacts
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+vendor/bundle/
+vendor/cache/
+
+# Development Files
+.git/
+node_modules/
+*.log
 README.md
 LICENSE.md
 CONTRIBUTING.md
@@ -25,29 +33,24 @@ Dockerfile
 docker-compose.yml
 .dockerignore
 
-# Cache and temporary files
-.sass-cache/
-_site/
-.jekyll-cache/
-.jekyll-metadata
-vendor/bundle/
-vendor/cache/
-
-# Documentation and scripts
-scripts/
-docs/
-*.md
-!README.md
-
-# Test files
+# Test Files
 src/components/__tests__/
 *.test.*
 *.spec.*
 coverage/
 .nyc_output/
 
-# Development files
-.eslintrc.*
-.prettierrc.*
-jest.config.*
-tsconfig.json
+# Documentation and Scripts
+docs/
+scripts/
+.markdown_generator/
+
+# Other Build Tools
+webpack.config.js
+.babelrc
+.eslintrc*
+.prettierrc*
+
+# Spec files and planning
+.specify/
+specs/
