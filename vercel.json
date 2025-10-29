@@ -6,21 +6,36 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "_site"
       }
     }
   ],
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "outputDirectory": "dist",
-  "devCommand": "npm run dev",
-  "framework": "vite",
+  "buildCommand": "bundle exec jekyll build",
+  "installCommand": "bundle install && npm install",
+  "outputDirectory": "_site",
+  "framework": "other",
   "functions": {},
   "regions": ["iad1"],
   "routes": [
     {
+      "src": "/css/(.*)",
+      "dest": "/css/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "/js/$1"
+    },
+    {
+      "src": "/images/(.*)",
+      "dest": "/images/$1"
+    },
+    {
+      "src": "/files/(.*)",
+      "dest": "/files/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/$1"
     }
   ],
   "headers": [
@@ -37,16 +52,18 @@
   "frameworkDetection": {
     "rules": [
       {
-        "src": "package.json",
-        "framework": "vite"
+        "src": "_config.yml",
+        "framework": "other"
       }
     ]
   },
   "build": {
     "env": {
       "NODE_VERSION": "18",
-      "VERCEL_FRAMEWORK": "vite",
-      "VERCEL_IGNORE_RUBY": "true"
+      "RUBY_VERSION": "3.2",
+      "VERCEL_IGNORE_RUBY": "false",
+      "JEKYLL_ENV": "production",
+      "BUNDLE_WITHOUT": "development"
     },
     "cwd": "."
   }

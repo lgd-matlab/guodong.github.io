@@ -2,8 +2,9 @@
 <!-- This include provides the Jekyll integration for the React ThemeToggle component -->
 
 <!-- Container for ThemeToggle React component -->
+{% assign theme_config = site.theme_toggle_config | default: '{}' %}
 <div id="theme-toggle-container" data-theme-toggle
-     data-config="{{ site.theme_toggle_config | default: '{}' }}"
+     data-config="{{ theme_config }}"
      class="{{ include.class | default: '' }}">
 
   <!-- Fallback content for when JavaScript is disabled or React fails to load -->

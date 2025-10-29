@@ -13,6 +13,14 @@ This is an academic portfolio website built with Jekyll, based on the Academic P
 - JavaScript (jQuery, FitVids, smooth-scroll)
 - Markdown for content
 - GitHub Pages for hosting
+- Vercel (alternative deployment platform)
+
+## Deployment Notes
+
+**Rubyzip Version Compatibility:**
+- The Gemfile includes `gem 'rubyzip', '~> 2.4'` to prevent automatic upgrades to version 3.x
+- This fixes deployment errors on Vercel where Rubyzip 3.x API changes cause build failures
+- Do not update this constraint unless testing deployment compatibility thoroughly
 
 ## readin principle
 当用户有所指代时，需要从索引.md中先检索用户指代内容是，确定用户需要修改的内容所在的文件及具体模块，确保能够准确理解用户的意图。
